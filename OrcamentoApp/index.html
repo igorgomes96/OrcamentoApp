@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Gestão de TH</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="Views/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.0/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="Views/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link href="Views/css/styles.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Loader.css -->
+    <link href="Views/lib/loader.css/loaders.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body ng-app="orcamentoApp">
+
+    <div id="wrapper">
+        <div ui-view></div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Angular -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script> 
+
+    <!-- Bootstrap -->
+    <script src="Views/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <!-- <script src="js/sb-admin-2.js"></script> -->
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.0/metisMenu.min.js"></script>
+
+    <!-- Loader.css -->
+    <script src="Views/lib/loader.css/loaders.css.js"></script>
+
+    <!-- App -->
+    <script src="Views/js/app.js"></script>
+
+    <!-- Directives -->
+    <script src="Views/lib/uiInputSiblingsDirective.js"></script>
+    <script src="Views/lib/uiPanelDirective.js"></script>
+
+    <!-- Routes -->
+    <script src="Views/js/config/routeConfig.js"></script>
+
+    <!-- Service -->
+    <script src="Views/js/services/localStorageService.js"></script>
+    <script src="Views/js/services/sharedDataService.js"></script>
+    <script src="Views/js/services/messagesService.js"></script>
+    <script src="Views/js/services/uploadFileService.js"></script>
+
+    <!-- APIs -->
+    <script src="Views/js/APIs/autenticacaoAPI.js"></script>
+    <script src="Views/js/APIs/cargosAPI.js"></script>
+    <script src="Views/js/APIs/centrosCustosAPI.js"></script>
+    <script src="Views/js/APIs/ciclosAPI.js"></script>
+    <script src="Views/js/APIs/contratacoesAPI.js"></script>
+    <script src="Views/js/APIs/contratacoesMesAPI.js"></script>
+    <script src="Views/js/APIs/diasIndenizadosAPI.js"></script>
+    <script src="Views/js/APIs/filiaisAPI.js"></script>
+    <script src="Views/js/APIs/funcionariosAPI.js"></script>
+    <script src="Views/js/APIs/usuariosAPI.js"></script>
+    <script src="Views/js/APIs/transferenciasAPI.js"></script>
+    <script src="Views/js/APIs/importacoesAPI.js"></script>
+    <script src="Views/js/APIs/encargosAPI.js"></script>
+    <script src="Views/js/APIs/empresasAPI.js"></script>
+    <script src="Views/js/APIs/sindicatosAPI.js"></script>
+    <script src="Views/js/APIs/mesesOrcamentoAPI.js"></script>
+    <script src="Views/js/APIs/conveniosMedAPI.js"></script>
+    <script src="Views/js/APIs/salariosAPI.js"></script>
+    <script src="Views/js/APIs/cidadesAPI.js"></script>
+    <script src="Views/js/APIs/actsAPI.js"></script>
+    <script src="Views/js/APIs/sthsAPI.js"></script>
+    <script src="Views/js/APIs/solicitacoesTHAPI.js"></script>
+    <script src="Views/js/APIs/solicitacoesAlteracoesCargosAPI.js"></script>
+    <script src="Views/js/APIs/solicitacoesAlteracoesSalariosAPI.js"></script>
+    <script src="Views/js/APIs/solicitacoesContratacoesAPI.js"></script>
+    <script src="Views/js/APIs/solicitacoesDesligamentosAPI.js"></script>
+    <script src="Views/js/APIs/setoresAPI.js"></script>
+    <script src="Views/js/APIs/perfisAcessoAPI.js"></script>
+
+
+    <!-- Controllers -->
+    <script src="Views/components/navigation/navigationCtrl.js"></script>
+    <script src="Views/components/orcamentoFiltros/orcamentoFiltrosCtrl.js"></script>
+    <script src="Views/components/pessoalOrcamento/pessoalOrcamentoCtrl.js"></script>
+    <script src="Views/components/pessoalOrcamento/pessoalBase/pessoalBaseCtrl.js"></script>
+    <script src="Views/components/pessoalOrcamento/pessoalContratacoes/pessoalContratacoesCtrl.js"></script>
+    <script src="Views/components/pessoalOrcamento/pessoalTransferencias/pessoalTransferenciasCtrl.js"></script>
+    <script src="Views/components/autenticacao/autenticacaoCtrl.js"></script>
+    <script src="Views/components/solicitacoesTH/solicitacoesTHCtrl.js"></script>
+    <script src="Views/components/solicitacoesTH/solicitacoesTHAlteracoes/solicitacoesTHAlteracoesCtrl.js"></script>
+    <script src="Views/components/solicitacoesTH/solicitacoesTHContratacoes/solicitacoesTHContratacoesCtrl.js"></script>
+    <script src="Views/components/solicitacoesTH/solicitacoesTHDemissoes/solicitacoesTHDemissoesCtrl.js"></script>
+    <script src="Views/components/solicitacoesTH/solicitacoesTHOutros/solicitacoesTHOutrosCtrl.js"></script>
+    <script src="Views/components/solicitacoesTH/solicitacoesTHHistorico/solicitacoesTHHistoricoCtrl.js"></script>
+    <script src="Views/components/premissas/premissasCtrl.js"></script>
+    <script src="Views/components/premissas/encargos/encargosPorEmpresaCtrl.js"></script>
+    <script src="Views/components/premissas/encargos/encargosPorFilialCtrl.js"></script>
+    <script src="Views/components/premissas/cargosSalarios/premissasCargosCtrl.js"></script>
+    <script src="Views/components/usuarios/gestaoUsuariosCtrl.js"></script>
+    <script src="Views/components/dashboard/dashboardCtrl.js"></script>
+
+    <!-- Interceptors -->
+    <script src="Views/js/config/interceptorsConfig.js"></script>
+    <script src="Views/js/interceptors/anexaTokenInterceptor.js"></script>
+    <script src="Views/js/interceptors/errorInterceptor.js"></script>
+
+    <!-- Values -->
+    <script src="Views/js/values/configValue.js"></script>
+
+    <!-- Lib -->
+    <script src="Views/lib/bootbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+</body>
+
+</html>

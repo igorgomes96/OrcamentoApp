@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd8765e47f6549b3a3ecdb2351110e1a" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="OrcamentoModel.Afastamento" Width="1.5" PointX="12.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.CargaHoraria" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Cargo" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Cidade" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.ContaContabil" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Contratacao" Width="1.75" PointX="7.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.DiasIndenizados" Width="1.5" PointX="9.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Empresa" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Encargos" Width="1.5" PointX="3.375" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Filial" Width="1.5" PointX="5.375" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Funcionario" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.HEBase" Width="1.5" PointX="12.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.HEContratacao" Width="1.5" PointX="9.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Nivel" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Orcado" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.OutrosBase" Width="1.5" PointX="12.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.PAT" Width="1.5" PointX="8.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.ReajConvenioMed" Width="2" PointX="2.875" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Reajuste" Width="1.5" PointX="5.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Receita" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.SalarioMinimo" Width="1.5" PointX="11.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Sindicato" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Transferencia" Width="2" PointX="15.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrcamentoModel.Variaveis" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="OrcamentoModel.afastamento_funcionario_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.pat_cargahoraria_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.variaveis_cargahoraria_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.variaveis_cargo_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.contratacao_cidade_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.filial_cidade_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.funcionario_cidade_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.orcado_contacontabil_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.contratacao_filial_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.contratacao_variaveis_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.hecontratacao_contratacao_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.encargos_empresa_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.filial_empresa_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.variaveis_empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.filial_sindicato_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.funcionario_filial_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.funcionario_sindicato_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.funcionario_variaveis_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.hebase_funcionario_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.outrosbase_funcionario_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.transferencia_funcionario_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.pat_sindicato_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OrcamentoModel.reajuste_sindicato_fk" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OrcamentoModel.Sessao" Width="1.5" PointX="1.25" PointY="24.125" />
+        <EntityTypeShape EntityType="OrcamentoModel.Permissao" Width="1.5" PointX="12.5" PointY="18.5" />
+        <EntityTypeShape EntityType="OrcamentoModel.Setor" Width="1.5" PointX="3" PointY="1.375" />
+        <AssociationConnector Association="OrcamentoModel.setor_nivel_fk" />
+        <AssociationConnector Association="OrcamentoModel.setor_setorpai_fk" />
+        <EntityTypeShape EntityType="OrcamentoModel.CentroCusto" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="OrcamentoModel.Usuario" Width="1.5" PointX="15.75" PointY="13.5" />
+        <AssociationConnector Association="OrcamentoModel.centrocusto_empresa_fk" />
+        <AssociationConnector Association="OrcamentoModel.centrocusto_setor_fk" />
+        <AssociationConnector Association="OrcamentoModel.contratacao_centrocusto_fk" />
+        <AssociationConnector Association="OrcamentoModel.funcionario_centrocusto_fk" />
+        <AssociationConnector Association="OrcamentoModel.orcado_centrocusto_fk" />
+        <AssociationConnector Association="OrcamentoModel.receita_centrocusto_fk" />
+        <AssociationConnector Association="OrcamentoModel.transferencia_centrocusto_fk" />
+        <AssociationConnector Association="OrcamentoModel.sessao_usuario_fk" />
+        <AssociationConnector Association="OrcamentoModel.usuario_setor_fk" />
+        <AssociationConnector Association="OrcamentoModel.UsuarioPermissao" />
+        <EntityTypeShape EntityType="OrcamentoModel.Ciclo" Width="1.5" PointX="16.875" PointY="1.25" />
+        <EntityTypeShape EntityType="OrcamentoModel.MesOrcamento" Width="1.5" PointX="18.875" PointY="1.375" />
+        <EntityTypeShape EntityType="OrcamentoModel.StatusCiclo" Width="1.5" PointX="14.375" PointY="4.375" />
+        <EntityTypeShape EntityType="OrcamentoModel.TipoCiclo" Width="1.5" PointX="14.375" PointY="1.375" />
+        <AssociationConnector Association="OrcamentoModel.ciclo_statusciclo_fk" />
+        <AssociationConnector Association="OrcamentoModel.ciclo_tipociclo_fk" />
+        <AssociationConnector Association="OrcamentoModel.mesorcamento_ciclo_fk" />
+        <AssociationConnector Association="OrcamentoModel.contratacao_ciclo_fk" />
+        <EntityTypeShape EntityType="OrcamentoModel.ContratacaoMes" Width="1.875" PointX="18.5" PointY="6.375" />
+        <AssociationConnector Association="OrcamentoModel.contratacaomes_contratacao_fk" />
+        <AssociationConnector Association="OrcamentoModel.contratacaomes_mesorcamento_fk" />
+        <EntityTypeShape EntityType="OrcamentoModel.ConvenioMed" Width="1.5" PointX="0.75" PointY="9.625" />
+        <AssociationConnector Association="OrcamentoModel.cargo_plano1_fk" />
+        <AssociationConnector Association="OrcamentoModel.cargo_plano2_fk" />
+        <AssociationConnector Association="OrcamentoModel.cargo_plano3_fk" />
+        <AssociationConnector Association="OrcamentoModel.contratacao_conveniomed_fk" />
+        <AssociationConnector Association="OrcamentoModel.funcionario_conveniomed_fk" />
+        <AssociationConnector Association="OrcamentoModel.reajconveniomed_conveniomed_fk" />
+        <EntityTypeShape EntityType="OrcamentoModel.Importacao" Width="1.5" PointX="18" PointY="14" />
+        <AssociationConnector Association="OrcamentoModel.importacao_usuario_fk" />
+        <AssociationConnector Association="OrcamentoModel.transferencia_mesorcamento_pk" />
+        <EntityTypeShape EntityType="OrcamentoModel.Salario" Width="1.5" PointX="10.625" PointY="21.5" />
+        <AssociationConnector Association="OrcamentoModel.salario_filial_fk" />
+        <AssociationConnector Association="OrcamentoModel.salario_variaveis_fk" />
+        <EntityTypeShape EntityType="OrcamentoModel.ACT" Width="1.5" PointX="20.25" PointY="17" />
+        <EntityTypeShape EntityType="OrcamentoModel.SolicitacaoAlteracaoSalario" Width="2.25" PointX="12.5" PointY="20.875" />
+        <EntityTypeShape EntityType="OrcamentoModel.SolicitacaoContratacao" Width="2" PointX="15.125" PointY="18.375" />
+        <EntityTypeShape EntityType="OrcamentoModel.SolicitacaoDesligamento" Width="2.25" PointX="13.125" PointY="23.375" />
+        <EntityTypeShape EntityType="OrcamentoModel.SolicitacaoTH" Width="2.25" PointX="17.625" PointY="17.625" />
+        <EntityTypeShape EntityType="OrcamentoModel.STH" Width="1.5" PointX="20.25" PointY="19.5" />
+        <AssociationConnector Association="OrcamentoModel.act_solicitacaoth_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaocontratacao_centrocusto_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaocontratacao_filial_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaoalteracaosalario_funcionario_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaodesligamento_funcionario_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaocontratacao_variaveis_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacao_usuario_fk" />
+        <AssociationConnector Association="OrcamentoModel.sth_solicitacaoth_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaoalteracaosalario_solicitacaoth_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaocontratacao_solicitacaoth_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaodesligamento_solicitacaoth_fk" />
+        <EntityTypeShape EntityType="OrcamentoModel.SolicitacaoAlteracaoCargo" Width="2.125" PointX="20.125" PointY="11.375" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaoalteracaocargo_funcionario_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaoalteracaocargo_anterior_variaveis_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaoalteracaocargo_novo_variaveis_fk" />
+        <AssociationConnector Association="OrcamentoModel.solicitacaoalteracaocargo_solicitacaoth_fk" />
+        <EntityTypeShape EntityType="OrcamentoModel.PerfilAcesso" Width="1.5" PointX="15.375" PointY="6.875" />
+        <AssociationConnector Association="OrcamentoModel.usuario_perfil_acesso_fk" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
