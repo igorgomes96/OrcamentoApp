@@ -1,5 +1,6 @@
-angular.module('orcamentoApp').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+angular.module('orcamentoApp').config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 
+    $locationProvider.hashPrefix('');
     $urlRouterProvider.otherwise('/autenticacao');
     
     $stateProvider
@@ -129,6 +130,18 @@ angular.module('orcamentoApp').config(['$stateProvider', '$urlRouterProvider', f
                 controller: 'premissasCargosCtrl as ct'
             }
         }
+    })
+
+    .state('menuContainer.premissasConvenioMedico', {
+        url: '/convenioMedico',
+        templateUrl: 'Views/components/premissas/convenioMedico/premissasConvenioMedico.html', 
+        controller: 'premissasConvenioMedicoCtrl as ct'
+    })
+
+    .state('menuContainer.premissasSindicatos', {
+        url: '/premissasReajustes',
+        templateUrl: 'Views/components/premissas/sindicatos/premissasSindicatos.html', 
+        controller: 'premissasSindicatosCtrl as ct'
     })
 
     .state('menuContainer.gestaoUsuarios', {

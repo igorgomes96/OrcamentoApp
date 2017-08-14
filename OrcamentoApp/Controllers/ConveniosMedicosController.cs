@@ -38,14 +38,14 @@ namespace OrcamentoApp.Controllers
 
         // PUT: api/ConveniosMedicos/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutConvenioMed(string id, ConvenioMed convenioMed)
+        public IHttpActionResult PutConvenioMed(int id, ConvenioMed convenioMed)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != convenioMed.Plano)
+            if (id != convenioMed.Codigo)
             {
                 return BadRequest();
             }
@@ -88,7 +88,7 @@ namespace OrcamentoApp.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ConvenioMedExists(convenioMed.Plano))
+                if (ConvenioMedExists(convenioMed.Codigo))
                 {
                     return Conflict();
                 }
@@ -127,9 +127,9 @@ namespace OrcamentoApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ConvenioMedExists(string id)
+        private bool ConvenioMedExists(int id)
         {
-            return db.ConvenioMed.Count(e => e.Plano == id) > 0;
+            return db.ConvenioMed.Count(e => e.Codigo == id) > 0;
         }
     }
 }

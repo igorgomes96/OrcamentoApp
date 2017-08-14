@@ -72,7 +72,12 @@ angular.module("orcamentoApp").controller('navigationCtrl', ['$scope', '$state',
 						visible: true
 					},
 					{
-						state: '#',
+						state: 'menuContainer.premissasConvenioMedico',
+						texto: 'Convênios Médicos',
+						visible: true
+					},
+					{
+						state: 'menuContainer.premissasSindicatos',
 						texto: 'Sindicatos',
 						visible: true
 					}

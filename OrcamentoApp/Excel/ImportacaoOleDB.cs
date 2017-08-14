@@ -111,19 +111,22 @@ namespace OrcamentoApp.Excel
                     if (e.Message.Split(new char[] { '.' })[0] != "'" + tab + "' is not a valid name") throw;
                 }
 
-                /*tab = "Filial";
+                //Salários
+                tab = "Salario";
                 adapter = new OleDbDataAdapter("select * from[" + tab + "$]", conexao);
                 ds = new DataSet() { DataSetName = tab };
                 try
                 {
                     adapter.Fill(ds);
-                    ImportacaoFiliais(ds);
+                    ImportacaoSalarios(ds);
                     //db.SaveChanges();
                 }
                 catch (OleDbException e)
                 {
                     if (e.Message.Split(new char[] { '.' })[0] != "'" + tab + "' is not a valid name") throw;
-                }*/
+                }
+
+
             } 
             catch (ConvenioNaoEncontrado e)
             {
@@ -144,6 +147,10 @@ namespace OrcamentoApp.Excel
             catch (CargoNaoEncontrado e)
             {
                 throw new Exception("Cargo não cadastrado (Cód. " + e.CodCargo + ")! Aba " + e.Aba + ", linha " + e.Linha + ".");
+            }
+            catch (CargaHorariaNaoEncontrada e)
+            {
+                throw new Exception("Carga Horária não cadastrada (" + e.CargaHoraria + " horas)! Aba " + e.Aba + ", linha " + e.Linha + ".");
             }
             catch (ExcelException e)
             {
@@ -169,6 +176,71 @@ namespace OrcamentoApp.Excel
         /*Nullable<DateTime> dataFim = null;
         if (DateTime.TryParse(r["Data Fim"].ToString(), out DateTime temp))
         dataFim = temp;*/
+
+
+        private void ImportacaoSalarios(DataSet ds)
+        {
+            int l = 2;
+            int? codCargo = null, cargaHoraria = null, codEmpresa = null;
+            string nomeCidade = null;
+            try
+            {
+
+                Salario salario;
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    //Condição de parada
+                    if (r["Faixa 1"] == null || r["Faixa 1"].ToString() == "") return;
+                    bool novo = false;
+
+                    codCargo = int.Parse(r["Código do Cargo"].ToString());
+                    cargaHoraria = int.Parse(r["Carga Horária"].ToString());
+                    codEmpresa = int.Parse(r["Código da Empresa"].ToString());
+                    nomeCidade = r["Nome da Cidade"].ToString();
+
+                    salario = db.Salario.Find(codCargo, cargaHoraria, codEmpresa, nomeCidade);
+                    if (salario == null)
+                    {
+                        salario = new Salario();
+                        novo = true;
+                    }
+
+                    salario.CargoCod = codCargo.Value;
+                    salario.CargaHoraria = cargaHoraria.Value;
+                    salario.EmpresaCod = codEmpresa.Value;
+                    salario.CidadeNome = nomeCidade;
+                    salario.Faixa1 = float.Parse(r["Faixa 1"].ToString());
+                    salario.Faixa2 = float.Parse(r["Faixa 2"].ToString());
+                    salario.Faixa3 = float.Parse(r["Faixa 3"].ToString());
+                    salario.Faixa4 = float.Parse(r["Faixa 4"].ToString());
+
+                    if (novo)
+                        db.Entry(salario).State = System.Data.Entity.EntityState.Added;
+                    else
+                        db.Entry(salario).State = System.Data.Entity.EntityState.Modified;
+
+                    try
+                    {
+                        db.SaveChanges();
+                    } catch (Exception e)
+                    {
+                        if (!CargoExists(codCargo.Value)) throw new CargoNaoEncontrado(codCargo.Value, ds.DataSetName, l);
+                        if (!EmpresaExists(codEmpresa.Value)) throw new EmpresaNaoEncontrada(codEmpresa.Value, ds.DataSetName, l);
+                        if (!CargaHorariaExists(codEmpresa.Value)) throw new CargaHorariaNaoEncontrada(codEmpresa.Value, ds.DataSetName, l);
+                        if (!CidadeExists(nomeCidade)) throw new CidadeNaoEncontrada(nomeCidade, ds.DataSetName, l);
+                        throw e;
+                    }
+
+                    l++;
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw new ExcelException(e.Message, ds.DataSetName, l);
+            }
+
+        }
 
         private void ImportacaoConvenioMed(DataSet ds)
         {
@@ -379,6 +451,16 @@ namespace OrcamentoApp.Excel
         private bool CidadeExists(string nomeCidade)
         {
             return db.Cidade.Count(x => x.NomeCidade == nomeCidade) > 0;
+        }
+
+        private bool CargoExists(int codCargo)
+        {
+            return db.Cargo.Count(x => x.Codigo == codCargo) > 0;
+        }
+
+        private bool CargaHorariaExists(int cargaHoraria)
+        {
+            return db.CargaHoraria.Count(x => x.CargaHorariaCod == cargaHoraria) > 0;
         }
 
         /*private void ImportacaoCRsEnvio(DataSet ds)

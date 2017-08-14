@@ -285,6 +285,8 @@
     <Compile Include="Exceptions\AuthenticationFailureResult.cs" />
     <Compile Include="Excel\ImportacaoOleDB.cs" />
     <Compile Include="Exceptions\CargoNaoEncontrado.cs" />
+    <Compile Include="Exceptions\CargaHorariaNaoEncontrada .cs" />
+    <Compile Include="Exceptions\SalarioNaoEncontrado.cs" />
     <Compile Include="Exceptions\CidadeNaoEncontrada.cs" />
     <Compile Include="Exceptions\ConvenioNaoEncontrado.cs" />
     <Compile Include="Exceptions\EmpresaNaoEncontrada.cs" />

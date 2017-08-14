@@ -7,9 +7,9 @@ angular.module('orcamentoApp').service('messagesService', ['$timeout', function(
 		var m = '<div class="mensagem-error">';
 
 		if (statusCode)
-			m = m + '<strong>Erro ' + statusCode + '!</strong><br>' + mensagem + '</div>';
+			m = m + '<strong><i class="fa fa-info-circle"></i> Erro ' + statusCode + '!</strong><br>' + mensagem + '</div>';
 		else
-			m = m + '<strong>Erro ao processar informações!</strong><br>' + mensagem + '</div>';
+			m = m + '<strong><i class="fa fa-info-circle"></i> Erro ao processar informações!</strong><br>' + mensagem + '</div>';
 
 
 		$('.mensagem-error').remove();
@@ -22,7 +22,7 @@ angular.module('orcamentoApp').service('messagesService', ['$timeout', function(
 	}
 
 	self.exibeMensagemSucesso = function(mensagem) {
-		mensagem = '<div class="mensagem-success"><strong>Sucesso ao processar solicitação!</strong><br>' + mensagem + '</div>';
+		mensagem = '<div class="mensagem-success"><strong><i class="fa fa-info-circle"></i> Sucesso ao processar solicitação!</strong><br>' + mensagem + '</div>';
 
 		$('.mensagem-success').remove();
 		$('body').append(mensagem);
