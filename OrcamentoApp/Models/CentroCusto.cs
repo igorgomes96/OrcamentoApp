@@ -19,7 +19,6 @@ namespace OrcamentoApp.Models
         {
             this.Contratacoes = new HashSet<Contratacao>();
             this.Funcionarios = new HashSet<Funcionario>();
-            this.Orcados = new HashSet<Orcado>();
             this.Receitas = new HashSet<Receita>();
             this.Transferencias = new HashSet<Transferencia>();
             this.SolicitacaoContratacao = new HashSet<SolicitacaoContratacao>();
@@ -42,8 +41,6 @@ namespace OrcamentoApp.Models
         public virtual ICollection<Contratacao> Contratacoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Funcionario> Funcionarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orcado> Orcados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Receita> Receitas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

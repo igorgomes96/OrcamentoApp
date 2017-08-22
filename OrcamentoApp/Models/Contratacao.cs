@@ -19,6 +19,7 @@ namespace OrcamentoApp.Models
         {
             this.HorasExtras = new HashSet<HEContratacao>();
             this.ContratacaoMeses = new HashSet<ContratacaoMes>();
+            this.CalculosEventosContratacoes = new HashSet<CalculoEventoContratacao>();
         }
     
         public int Codigo { get; set; }
@@ -44,5 +45,7 @@ namespace OrcamentoApp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContratacaoMes> ContratacaoMeses { get; set; }
         public virtual ConvenioMed ConvenioMed { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CalculoEventoContratacao> CalculosEventosContratacoes { get; set; }
     }
 }

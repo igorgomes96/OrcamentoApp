@@ -17,15 +17,14 @@ namespace OrcamentoApp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ContaContabil()
         {
-            this.Orcados = new HashSet<Orcado>();
+            this.EventoFolha = new HashSet<EventoFolha>();
         }
     
         public string Codigo { get; set; }
         public string Nome { get; set; }
-        public string Pacote { get; set; }
-        public string SubPacote { get; set; }
+        public string Grupo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orcado> Orcados { get; set; }
+        public virtual ICollection<EventoFolha> EventoFolha { get; set; }
     }
 }

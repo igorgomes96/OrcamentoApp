@@ -23,6 +23,28 @@
           <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MatriculaFuncionario" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="CalculoEventoBase">
+          <Key>
+            <PropertyRef Name="CodEvento" />
+            <PropertyRef Name="MatriculaFuncionario" />
+            <PropertyRef Name="CodMesOrcamento" />
+          </Key>
+          <Property Name="CodEvento" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MatriculaFuncionario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CodMesOrcamento" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="real" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CalculoEventoContratacao">
+          <Key>
+            <PropertyRef Name="CodContratacao" />
+            <PropertyRef Name="CodEvento" />
+            <PropertyRef Name="CodMesOrcamento" />
+          </Key>
+          <Property Name="CodContratacao" Type="int" Nullable="false" />
+          <Property Name="CodEvento" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CodMesOrcamento" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="real" />
+        </EntityType>
         <EntityType Name="CargaHoraria">
           <Key>
             <PropertyRef Name="CargaHoraria" />
@@ -79,10 +101,9 @@
           <Key>
             <PropertyRef Name="Codigo" />
           </Key>
-          <Property Name="Codigo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="255" />
-          <Property Name="Pacote" Type="varchar" MaxLength="255" />
-          <Property Name="SubPacote" Type="varchar" MaxLength="255" />
+          <Property Name="Grupo" Type="varchar" MaxLength="60" />
         </EntityType>
         <EntityType Name="Contratacao">
           <Key>
@@ -147,6 +168,22 @@
           <Property Name="INSS" Type="float" Nullable="false" />
           <Property Name="SistemaS" Type="float" Nullable="false" />
           <Property Name="EmpresaCod" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventoFolha">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NomeEvento" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="EventoFolhaConta">
+          <Key>
+            <PropertyRef Name="CodEvento" />
+            <PropertyRef Name="CodConta" />
+          </Key>
+          <Property Name="CodEvento" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CodConta" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Filial">
           <Key>
@@ -240,17 +277,6 @@
           </Key>
           <Property Name="Nivel" Type="int" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="255" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Orcado">
-          <Key>
-            <PropertyRef Name="CentroCustoCod" />
-            <PropertyRef Name="ContaContabilCod" />
-            <PropertyRef Name="Mes" />
-          </Key>
-          <Property Name="CentroCustoCod" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="ContaContabilCod" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Mes" Type="datetime" Nullable="false" />
-          <Property Name="Valor" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="OutrosBase">
           <Key>
@@ -518,6 +544,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="calculoeventobase_eventofolha_fk">
+          <End Role="EventoFolha" Type="Self.EventoFolha" Multiplicity="1" />
+          <End Role="CalculoEventoBase" Type="Self.CalculoEventoBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventoFolha">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="CalculoEventoBase">
+              <PropertyRef Name="CodEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="calculoeventobase_funcionario_fk">
+          <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
+          <End Role="CalculoEventoBase" Type="Self.CalculoEventoBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionario">
+              <PropertyRef Name="Matricula" />
+            </Principal>
+            <Dependent Role="CalculoEventoBase">
+              <PropertyRef Name="MatriculaFuncionario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="calculoeventobase_mesorcamento_fk">
+          <End Role="MesOrcamento" Type="Self.MesOrcamento" Multiplicity="1" />
+          <End Role="CalculoEventoBase" Type="Self.CalculoEventoBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MesOrcamento">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="CalculoEventoBase">
+              <PropertyRef Name="CodMesOrcamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="calculoeventocontratacao_contratacao_fk">
+          <End Role="Contratacao" Type="Self.Contratacao" Multiplicity="1" />
+          <End Role="CalculoEventoContratacao" Type="Self.CalculoEventoContratacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratacao">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="CalculoEventoContratacao">
+              <PropertyRef Name="CodContratacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="calculoeventocontratacao_evento_fk">
+          <End Role="EventoFolha" Type="Self.EventoFolha" Multiplicity="1" />
+          <End Role="CalculoEventoContratacao" Type="Self.CalculoEventoContratacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventoFolha">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="CalculoEventoContratacao">
+              <PropertyRef Name="CodEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="calculoeventocontratacao_mesorcamento_fk">
+          <End Role="MesOrcamento" Type="Self.MesOrcamento" Multiplicity="1" />
+          <End Role="CalculoEventoContratacao" Type="Self.CalculoEventoContratacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MesOrcamento">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="CalculoEventoContratacao">
+              <PropertyRef Name="CodMesOrcamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="cargo_plano1_fk">
           <End Role="ConvenioMed" Type="Self.ConvenioMed" Multiplicity="0..1" />
           <End Role="Cargo" Type="Self.Cargo" Multiplicity="*" />
@@ -716,6 +814,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="eventofolhaconta_conta_fk">
+          <End Role="ContaContabil" Type="Self.ContaContabil" Multiplicity="1" />
+          <End Role="EventoFolhaConta" Type="Self.EventoFolhaConta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContaContabil">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="EventoFolhaConta">
+              <PropertyRef Name="CodConta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="eventofolhaconta_evento_fk">
+          <End Role="EventoFolha" Type="Self.EventoFolha" Multiplicity="1" />
+          <End Role="EventoFolhaConta" Type="Self.EventoFolhaConta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventoFolha">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="EventoFolhaConta">
+              <PropertyRef Name="CodEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="filial_cidade_fk">
           <End Role="Cidade" Type="Self.Cidade" Multiplicity="1" />
           <End Role="Filial" Type="Self.Filial" Multiplicity="*" />
@@ -875,30 +997,6 @@
             </Principal>
             <Dependent Role="MesOrcamento">
               <PropertyRef Name="CicloCod" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="orcado_centrocusto_fk">
-          <End Role="CentroCusto" Type="Self.CentroCusto" Multiplicity="1" />
-          <End Role="Orcado" Type="Self.Orcado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CentroCusto">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Orcado">
-              <PropertyRef Name="CentroCustoCod" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="orcado_contacontabil_fk">
-          <End Role="ContaContabil" Type="Self.ContaContabil" Multiplicity="1" />
-          <End Role="Orcado" Type="Self.Orcado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ContaContabil">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Orcado">
-              <PropertyRef Name="ContaContabilCod" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1345,6 +1443,8 @@
         <EntityContainer Name="OrcamentoModelStoreContainer">
           <EntitySet Name="ACT" EntityType="Self.ACT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Afastamento" EntityType="Self.Afastamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CalculoEventoBase" EntityType="Self.CalculoEventoBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CalculoEventoContratacao" EntityType="Self.CalculoEventoContratacao" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CargaHoraria" EntityType="Self.CargaHoraria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CentroCusto" EntityType="Self.CentroCusto" Schema="dbo" store:Type="Tables" />
@@ -1357,6 +1457,8 @@
           <EntitySet Name="DiasIndenizados" EntityType="Self.DiasIndenizados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Encargos" EntityType="Self.Encargos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventoFolha" EntityType="Self.EventoFolha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventoFolhaConta" EntityType="Self.EventoFolhaConta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Filial" EntityType="Self.Filial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Funcionario" EntityType="Self.Funcionario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HEBase" EntityType="Self.HEBase" Schema="dbo" store:Type="Tables" />
@@ -1364,7 +1466,6 @@
           <EntitySet Name="Importacao" EntityType="Self.Importacao" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MesOrcamento" EntityType="Self.MesOrcamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nivel" EntityType="Self.Nivel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Orcado" EntityType="Self.Orcado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OutrosBase" EntityType="Self.OutrosBase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PAT" EntityType="Self.PAT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PerfilAcesso" EntityType="Self.PerfilAcesso" Schema="dbo" store:Type="Tables" />
@@ -1396,6 +1497,30 @@
           <AssociationSet Name="afastamento_funcionario_fk" Association="Self.afastamento_funcionario_fk">
             <End Role="Funcionario" EntitySet="Funcionario" />
             <End Role="Afastamento" EntitySet="Afastamento" />
+          </AssociationSet>
+          <AssociationSet Name="calculoeventobase_eventofolha_fk" Association="Self.calculoeventobase_eventofolha_fk">
+            <End Role="EventoFolha" EntitySet="EventoFolha" />
+            <End Role="CalculoEventoBase" EntitySet="CalculoEventoBase" />
+          </AssociationSet>
+          <AssociationSet Name="calculoeventobase_funcionario_fk" Association="Self.calculoeventobase_funcionario_fk">
+            <End Role="Funcionario" EntitySet="Funcionario" />
+            <End Role="CalculoEventoBase" EntitySet="CalculoEventoBase" />
+          </AssociationSet>
+          <AssociationSet Name="calculoeventobase_mesorcamento_fk" Association="Self.calculoeventobase_mesorcamento_fk">
+            <End Role="MesOrcamento" EntitySet="MesOrcamento" />
+            <End Role="CalculoEventoBase" EntitySet="CalculoEventoBase" />
+          </AssociationSet>
+          <AssociationSet Name="calculoeventocontratacao_contratacao_fk" Association="Self.calculoeventocontratacao_contratacao_fk">
+            <End Role="Contratacao" EntitySet="Contratacao" />
+            <End Role="CalculoEventoContratacao" EntitySet="CalculoEventoContratacao" />
+          </AssociationSet>
+          <AssociationSet Name="calculoeventocontratacao_evento_fk" Association="Self.calculoeventocontratacao_evento_fk">
+            <End Role="EventoFolha" EntitySet="EventoFolha" />
+            <End Role="CalculoEventoContratacao" EntitySet="CalculoEventoContratacao" />
+          </AssociationSet>
+          <AssociationSet Name="calculoeventocontratacao_mesorcamento_fk" Association="Self.calculoeventocontratacao_mesorcamento_fk">
+            <End Role="MesOrcamento" EntitySet="MesOrcamento" />
+            <End Role="CalculoEventoContratacao" EntitySet="CalculoEventoContratacao" />
           </AssociationSet>
           <AssociationSet Name="cargo_plano1_fk" Association="Self.cargo_plano1_fk">
             <End Role="ConvenioMed" EntitySet="ConvenioMed" />
@@ -1461,6 +1586,14 @@
             <End Role="Empresa" EntitySet="Empresa" />
             <End Role="Encargos" EntitySet="Encargos" />
           </AssociationSet>
+          <AssociationSet Name="eventofolhaconta_conta_fk" Association="Self.eventofolhaconta_conta_fk">
+            <End Role="ContaContabil" EntitySet="ContaContabil" />
+            <End Role="EventoFolhaConta" EntitySet="EventoFolhaConta" />
+          </AssociationSet>
+          <AssociationSet Name="eventofolhaconta_evento_fk" Association="Self.eventofolhaconta_evento_fk">
+            <End Role="EventoFolha" EntitySet="EventoFolha" />
+            <End Role="EventoFolhaConta" EntitySet="EventoFolhaConta" />
+          </AssociationSet>
           <AssociationSet Name="filial_cidade_fk" Association="Self.filial_cidade_fk">
             <End Role="Cidade" EntitySet="Cidade" />
             <End Role="Filial" EntitySet="Filial" />
@@ -1512,14 +1645,6 @@
           <AssociationSet Name="mesorcamento_ciclo_fk" Association="Self.mesorcamento_ciclo_fk">
             <End Role="Ciclo" EntitySet="Ciclo" />
             <End Role="MesOrcamento" EntitySet="MesOrcamento" />
-          </AssociationSet>
-          <AssociationSet Name="orcado_centrocusto_fk" Association="Self.orcado_centrocusto_fk">
-            <End Role="CentroCusto" EntitySet="CentroCusto" />
-            <End Role="Orcado" EntitySet="Orcado" />
-          </AssociationSet>
-          <AssociationSet Name="orcado_contacontabil_fk" Association="Self.orcado_contacontabil_fk">
-            <End Role="ContaContabil" EntitySet="ContaContabil" />
-            <End Role="Orcado" EntitySet="Orcado" />
           </AssociationSet>
           <AssociationSet Name="outrosbase_funcionario_fk" Association="Self.outrosbase_funcionario_fk">
             <End Role="Funcionario" EntitySet="Funcionario" />
@@ -1717,11 +1842,10 @@
           <Key>
             <PropertyRef Name="Codigo" />
           </Key>
-          <Property Name="Codigo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Pacote" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="SubPacote" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Orcados" Relationship="Self.orcado_contacontabil_fk" FromRole="ContaContabil" ToRole="Orcado" />
+          <Property Name="Grupo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EventoFolha" Relationship="OrcamentoModel.EventoFolhaConta" FromRole="ContaContabil" ToRole="EventoFolha" />
         </EntityType>
         <EntityType Name="Contratacao">
           <Key>
@@ -1747,6 +1871,7 @@
           <Property Name="ConvenioPlanoCod" Type="Int32" />
           <NavigationProperty Name="ConvenioMed" Relationship="OrcamentoModel.contratacao_conveniomed_fk" FromRole="Contratacao" ToRole="ConvenioMed" />
           <Property Name="Salario" Type="Single" Nullable="false" />
+          <NavigationProperty Name="CalculosEventosContratacoes" Relationship="OrcamentoModel.calculoeventocontratacao_contratacao_fk" FromRole="Contratacao" ToRole="CalculoEventoContratacao" />
         </EntityType>
         <EntityType Name="DiasIndenizados">
           <Key>
@@ -1844,6 +1969,7 @@
           <NavigationProperty Name="SolicitacaoAlteracaoSalario" Relationship="OrcamentoModel.solicitacaoalteracaosalario_funcionario_fk" FromRole="Funcionario" ToRole="SolicitacaoAlteracaoSalario" />
           <NavigationProperty Name="SolicitacaoDesligamento" Relationship="OrcamentoModel.solicitacaodesligamento_funcionario_fk" FromRole="Funcionario" ToRole="SolicitacaoDesligamento" />
           <NavigationProperty Name="SolicitacaoAlteracaoCargo" Relationship="OrcamentoModel.solicitacaoalteracaocargo_funcionario_fk" FromRole="Funcionario" ToRole="SolicitacaoAlteracaoCargo" />
+          <NavigationProperty Name="CalculosEventosBase" Relationship="OrcamentoModel.calculoeventobase_funcionario_fk" FromRole="Funcionario" ToRole="CalculoEventoBase" />
         </EntityType>
         <EntityType Name="HEBase">
           <Key>
@@ -1876,19 +2002,6 @@
           <Property Name="NivelCod" Type="Int32" Nullable="false" />
           <Property Name="Nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Setores" Relationship="OrcamentoModel.setor_nivel_fk" FromRole="Nivel" ToRole="Setor" />
-        </EntityType>
-        <EntityType Name="Orcado">
-          <Key>
-            <PropertyRef Name="CentroCustoCod" />
-            <PropertyRef Name="ContaContabilCod" />
-            <PropertyRef Name="Mes" />
-          </Key>
-          <Property Name="CentroCustoCod" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ContaContabilCod" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Mes" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Valor" Type="Double" Nullable="false" />
-          <NavigationProperty Name="ContaContabil" Relationship="Self.orcado_contacontabil_fk" FromRole="Orcado" ToRole="ContaContabil" />
-          <NavigationProperty Name="CentroCusto" Relationship="OrcamentoModel.orcado_centrocusto_fk" FromRole="Orcado" ToRole="CentroCusto" />
         </EntityType>
         <EntityType Name="OutrosBase">
           <Key>
@@ -2084,18 +2197,6 @@
             </Principal>
             <Dependent Role="Funcionario">
               <PropertyRef Name="CidadeNome" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="orcado_contacontabil_fk">
-          <End Role="ContaContabil" Type="Self.ContaContabil" Multiplicity="1" />
-          <End Role="Orcado" Type="Self.Orcado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ContaContabil">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Orcado">
-              <PropertyRef Name="ContaContabilCod" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2306,7 +2407,6 @@
           <EntitySet Name="HEBase" EntityType="Self.HEBase" />
           <EntitySet Name="HEContratacao" EntityType="Self.HEContratacao" />
           <EntitySet Name="Nivel" EntityType="Self.Nivel" />
-          <EntitySet Name="Orcado" EntityType="Self.Orcado" />
           <EntitySet Name="OutrosBase" EntityType="Self.OutrosBase" />
           <EntitySet Name="PAT" EntityType="Self.PAT" />
           <EntitySet Name="ReajConvenioMed" EntityType="Self.ReajConvenioMed" />
@@ -2343,10 +2443,6 @@
           <AssociationSet Name="funcionario_cidade_fk" Association="Self.funcionario_cidade_fk">
             <End Role="Cidade" EntitySet="Cidade" />
             <End Role="Funcionario" EntitySet="Funcionario" />
-          </AssociationSet>
-          <AssociationSet Name="orcado_contacontabil_fk" Association="Self.orcado_contacontabil_fk">
-            <End Role="ContaContabil" EntitySet="ContaContabil" />
-            <End Role="Orcado" EntitySet="Orcado" />
           </AssociationSet>
           <AssociationSet Name="contratacao_filial_fk" Association="Self.contratacao_filial_fk">
             <End Role="Filial" EntitySet="Filial" />
@@ -2436,10 +2532,6 @@
           <AssociationSet Name="funcionario_centrocusto_fk" Association="OrcamentoModel.funcionario_centrocusto_fk">
             <End Role="CentroCusto" EntitySet="CentroCusto" />
             <End Role="Funcionario" EntitySet="Funcionario" />
-          </AssociationSet>
-          <AssociationSet Name="orcado_centrocusto_fk" Association="OrcamentoModel.orcado_centrocusto_fk">
-            <End Role="CentroCusto" EntitySet="CentroCusto" />
-            <End Role="Orcado" EntitySet="Orcado" />
           </AssociationSet>
           <AssociationSet Name="receita_centrocusto_fk" Association="OrcamentoModel.receita_centrocusto_fk">
             <End Role="CentroCusto" EntitySet="CentroCusto" />
@@ -2605,6 +2697,37 @@
             <End Role="PerfilAcesso" EntitySet="PerfilAcesso" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
+          <EntitySet Name="CalculoEventoBase" EntityType="OrcamentoModel.CalculoEventoBase" />
+          <EntitySet Name="CalculoEventoContratacao" EntityType="OrcamentoModel.CalculoEventoContratacao" />
+          <EntitySet Name="EventoFolha" EntityType="OrcamentoModel.EventoFolha" />
+          <AssociationSet Name="calculoeventobase_eventofolha_fk" Association="OrcamentoModel.calculoeventobase_eventofolha_fk">
+            <End Role="EventoFolha" EntitySet="EventoFolha" />
+            <End Role="CalculoEventoBase" EntitySet="CalculoEventoBase" />
+          </AssociationSet>
+          <AssociationSet Name="calculoeventobase_funcionario_fk" Association="OrcamentoModel.calculoeventobase_funcionario_fk">
+            <End Role="Funcionario" EntitySet="Funcionario" />
+            <End Role="CalculoEventoBase" EntitySet="CalculoEventoBase" />
+          </AssociationSet>
+          <AssociationSet Name="calculoeventobase_mesorcamento_fk" Association="OrcamentoModel.calculoeventobase_mesorcamento_fk">
+            <End Role="MesOrcamento" EntitySet="MesOrcamento" />
+            <End Role="CalculoEventoBase" EntitySet="CalculoEventoBase" />
+          </AssociationSet>
+          <AssociationSet Name="calculoeventocontratacao_contratacao_fk" Association="OrcamentoModel.calculoeventocontratacao_contratacao_fk">
+            <End Role="Contratacao" EntitySet="Contratacao" />
+            <End Role="CalculoEventoContratacao" EntitySet="CalculoEventoContratacao" />
+          </AssociationSet>
+          <AssociationSet Name="calculoeventocontratacao_evento_fk" Association="OrcamentoModel.calculoeventocontratacao_evento_fk">
+            <End Role="EventoFolha" EntitySet="EventoFolha" />
+            <End Role="CalculoEventoContratacao" EntitySet="CalculoEventoContratacao" />
+          </AssociationSet>
+          <AssociationSet Name="calculoeventocontratacao_mesorcamento_fk" Association="OrcamentoModel.calculoeventocontratacao_mesorcamento_fk">
+            <End Role="MesOrcamento" EntitySet="MesOrcamento" />
+            <End Role="CalculoEventoContratacao" EntitySet="CalculoEventoContratacao" />
+          </AssociationSet>
+          <AssociationSet Name="EventoFolhaConta" Association="OrcamentoModel.EventoFolhaConta">
+            <End Role="ContaContabil" EntitySet="ContaContabil" />
+            <End Role="EventoFolha" EntitySet="EventoFolha" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Sessao">
           <Key>
@@ -2680,7 +2803,6 @@
           <NavigationProperty Name="Setor" Relationship="OrcamentoModel.centrocusto_setor_fk" FromRole="CentroCusto" ToRole="Setor" />
           <NavigationProperty Name="Contratacoes" Relationship="OrcamentoModel.contratacao_centrocusto_fk" FromRole="CentroCusto" ToRole="Contratacao" />
           <NavigationProperty Name="Funcionarios" Relationship="OrcamentoModel.funcionario_centrocusto_fk" FromRole="CentroCusto" ToRole="Funcionario" />
-          <NavigationProperty Name="Orcados" Relationship="OrcamentoModel.orcado_centrocusto_fk" FromRole="CentroCusto" ToRole="Orcado" />
           <NavigationProperty Name="Receitas" Relationship="OrcamentoModel.receita_centrocusto_fk" FromRole="CentroCusto" ToRole="Receita" />
           <NavigationProperty Name="Transferencias" Relationship="OrcamentoModel.transferencia_centrocusto_fk" FromRole="CentroCusto" ToRole="Transferencia" />
           <Property Name="Descricao2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -2748,18 +2870,6 @@
               <PropertyRef Name="Codigo" />
             </Principal>
             <Dependent Role="Funcionario">
-              <PropertyRef Name="CentroCustoCod" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="orcado_centrocusto_fk">
-          <End Type="OrcamentoModel.CentroCusto" Role="CentroCusto" Multiplicity="1" />
-          <End Type="OrcamentoModel.Orcado" Role="Orcado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CentroCusto">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Orcado">
               <PropertyRef Name="CentroCustoCod" />
             </Dependent>
           </ReferentialConstraint>
@@ -2838,8 +2948,10 @@
           <Property Name="Mes" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CicloCod" Type="Int32" />
           <NavigationProperty Name="Ciclo" Relationship="OrcamentoModel.mesorcamento_ciclo_fk" FromRole="MesOrcamento" ToRole="Ciclo" />
-          <NavigationProperty Name="ContratacaoMes" Relationship="OrcamentoModel.contratacaomes_mesorcamento_fk" FromRole="MesOrcamento" ToRole="ContratacaoMes" />
-          <NavigationProperty Name="Transferencia" Relationship="OrcamentoModel.transferencia_mesorcamento_pk" FromRole="MesOrcamento" ToRole="Transferencia" />
+          <NavigationProperty Name="ContratacoesMeses" Relationship="OrcamentoModel.contratacaomes_mesorcamento_fk" FromRole="MesOrcamento" ToRole="ContratacaoMes" />
+          <NavigationProperty Name="Transferencias" Relationship="OrcamentoModel.transferencia_mesorcamento_pk" FromRole="MesOrcamento" ToRole="Transferencia" />
+          <NavigationProperty Name="CalculosEventosBase" Relationship="OrcamentoModel.calculoeventobase_mesorcamento_fk" FromRole="MesOrcamento" ToRole="CalculoEventoBase" />
+          <NavigationProperty Name="CalculosEventosContratacao" Relationship="OrcamentoModel.calculoeventocontratacao_mesorcamento_fk" FromRole="MesOrcamento" ToRole="CalculoEventoContratacao" />
         </EntityType>
         <EntityType Name="StatusCiclo">
           <Key>
@@ -3424,6 +3536,121 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CalculoEventoBase">
+          <Key>
+            <PropertyRef Name="CodEvento" />
+            <PropertyRef Name="MatriculaFuncionario" />
+            <PropertyRef Name="CodMesOrcamento" />
+          </Key>
+          <Property Name="CodEvento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MatriculaFuncionario" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CodMesOrcamento" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Single" Nullable="false" />
+          <NavigationProperty Name="EventoFolha" Relationship="OrcamentoModel.calculoeventobase_eventofolha_fk" FromRole="CalculoEventoBase" ToRole="EventoFolha" />
+          <NavigationProperty Name="Funcionario" Relationship="OrcamentoModel.calculoeventobase_funcionario_fk" FromRole="CalculoEventoBase" ToRole="Funcionario" />
+          <NavigationProperty Name="MesOrcamento" Relationship="OrcamentoModel.calculoeventobase_mesorcamento_fk" FromRole="CalculoEventoBase" ToRole="MesOrcamento" />
+        </EntityType>
+        <EntityType Name="CalculoEventoContratacao">
+          <Key>
+            <PropertyRef Name="CodContratacao" />
+            <PropertyRef Name="CodEvento" />
+            <PropertyRef Name="CodMesOrcamento" />
+          </Key>
+          <Property Name="CodContratacao" Type="Int32" Nullable="false" />
+          <Property Name="CodEvento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CodMesOrcamento" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Single" />
+          <NavigationProperty Name="Contratacao" Relationship="OrcamentoModel.calculoeventocontratacao_contratacao_fk" FromRole="CalculoEventoContratacao" ToRole="Contratacao" />
+          <NavigationProperty Name="EventoFolha" Relationship="OrcamentoModel.calculoeventocontratacao_evento_fk" FromRole="CalculoEventoContratacao" ToRole="EventoFolha" />
+          <NavigationProperty Name="MesOrcamento" Relationship="OrcamentoModel.calculoeventocontratacao_mesorcamento_fk" FromRole="CalculoEventoContratacao" ToRole="MesOrcamento" />
+        </EntityType>
+        <EntityType Name="EventoFolha">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NomeEvento" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Descricao" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CalculosEventosBase" Relationship="OrcamentoModel.calculoeventobase_eventofolha_fk" FromRole="EventoFolha" ToRole="CalculoEventoBase" />
+          <NavigationProperty Name="CalculosEventosContratacoes" Relationship="OrcamentoModel.calculoeventocontratacao_evento_fk" FromRole="EventoFolha" ToRole="CalculoEventoContratacao" />
+          <NavigationProperty Name="ContaContabil" Relationship="OrcamentoModel.EventoFolhaConta" FromRole="EventoFolha" ToRole="ContaContabil" />
+        </EntityType>
+        <Association Name="calculoeventobase_eventofolha_fk">
+          <End Type="OrcamentoModel.EventoFolha" Role="EventoFolha" Multiplicity="1" />
+          <End Type="OrcamentoModel.CalculoEventoBase" Role="CalculoEventoBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventoFolha">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="CalculoEventoBase">
+              <PropertyRef Name="CodEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="calculoeventobase_funcionario_fk">
+          <End Type="OrcamentoModel.Funcionario" Role="Funcionario" Multiplicity="1" />
+          <End Type="OrcamentoModel.CalculoEventoBase" Role="CalculoEventoBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionario">
+              <PropertyRef Name="Matricula" />
+            </Principal>
+            <Dependent Role="CalculoEventoBase">
+              <PropertyRef Name="MatriculaFuncionario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="calculoeventobase_mesorcamento_fk">
+          <End Type="OrcamentoModel.MesOrcamento" Role="MesOrcamento" Multiplicity="1" />
+          <End Type="OrcamentoModel.CalculoEventoBase" Role="CalculoEventoBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MesOrcamento">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="CalculoEventoBase">
+              <PropertyRef Name="CodMesOrcamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="calculoeventocontratacao_contratacao_fk">
+          <End Type="OrcamentoModel.Contratacao" Role="Contratacao" Multiplicity="1" />
+          <End Type="OrcamentoModel.CalculoEventoContratacao" Role="CalculoEventoContratacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contratacao">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="CalculoEventoContratacao">
+              <PropertyRef Name="CodContratacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="calculoeventocontratacao_evento_fk">
+          <End Type="OrcamentoModel.EventoFolha" Role="EventoFolha" Multiplicity="1" />
+          <End Type="OrcamentoModel.CalculoEventoContratacao" Role="CalculoEventoContratacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventoFolha">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="CalculoEventoContratacao">
+              <PropertyRef Name="CodEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="calculoeventocontratacao_mesorcamento_fk">
+          <End Type="OrcamentoModel.MesOrcamento" Role="MesOrcamento" Multiplicity="1" />
+          <End Type="OrcamentoModel.CalculoEventoContratacao" Role="CalculoEventoContratacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MesOrcamento">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="CalculoEventoContratacao">
+              <PropertyRef Name="CodMesOrcamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EventoFolhaConta">
+          <End Type="OrcamentoModel.ContaContabil" Role="ContaContabil" Multiplicity="*" />
+          <End Type="OrcamentoModel.EventoFolha" Role="EventoFolha" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3474,10 +3701,9 @@
           <EntitySetMapping Name="ContaContabil">
             <EntityTypeMapping TypeName="OrcamentoModel.ContaContabil">
               <MappingFragment StoreEntitySet="ContaContabil">
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Pacote" ColumnName="Pacote" />
-                <ScalarProperty Name="SubPacote" ColumnName="SubPacote" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3600,16 +3826,6 @@
               <MappingFragment StoreEntitySet="Nivel">
                 <ScalarProperty Name="NivelCod" ColumnName="Nivel" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orcado">
-            <EntityTypeMapping TypeName="OrcamentoModel.Orcado">
-              <MappingFragment StoreEntitySet="Orcado">
-                <ScalarProperty Name="CentroCustoCod" ColumnName="CentroCustoCod" />
-                <ScalarProperty Name="ContaContabilCod" ColumnName="ContaContabilCod" />
-                <ScalarProperty Name="Mes" ColumnName="Mes" />
-                <ScalarProperty Name="Valor" ColumnName="Valor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3944,7 +4160,44 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="CalculoEventoBase">
+            <EntityTypeMapping TypeName="OrcamentoModel.CalculoEventoBase">
+              <MappingFragment StoreEntitySet="CalculoEventoBase">
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="CodMesOrcamento" ColumnName="CodMesOrcamento" />
+                <ScalarProperty Name="MatriculaFuncionario" ColumnName="MatriculaFuncionario" />
+                <ScalarProperty Name="CodEvento" ColumnName="CodEvento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CalculoEventoContratacao">
+            <EntityTypeMapping TypeName="OrcamentoModel.CalculoEventoContratacao">
+              <MappingFragment StoreEntitySet="CalculoEventoContratacao">
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="CodMesOrcamento" ColumnName="CodMesOrcamento" />
+                <ScalarProperty Name="CodEvento" ColumnName="CodEvento" />
+                <ScalarProperty Name="CodContratacao" ColumnName="CodContratacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventoFolha">
+            <EntityTypeMapping TypeName="OrcamentoModel.EventoFolha">
+              <MappingFragment StoreEntitySet="EventoFolha">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="NomeEvento" ColumnName="NomeEvento" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="EventoFolhaConta" TypeName="OrcamentoModel.EventoFolhaConta" StoreEntitySet="EventoFolhaConta">
+            <EndProperty Name="EventoFolha">
+              <ScalarProperty Name="Codigo" ColumnName="CodEvento" />
+            </EndProperty>
+            <EndProperty Name="ContaContabil">
+              <ScalarProperty Name="Codigo" ColumnName="CodConta" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

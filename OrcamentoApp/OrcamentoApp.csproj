@@ -220,7 +220,6 @@
     <Compile Include="Controllers\HEsContratacoesController.cs" />
     <Compile Include="Controllers\ImportacoesController.cs" />
     <Compile Include="Controllers\MesesOrcamentoController.cs" />
-    <Compile Include="Controllers\OrcadosController.cs" />
     <Compile Include="Controllers\OutrosBasesController.cs" />
     <Compile Include="Controllers\PATsController.cs" />
     <Compile Include="Controllers\PerfisAcessoController.cs" />
@@ -261,7 +260,6 @@
     <Compile Include="DTO\HEContratacaoDTO.cs" />
     <Compile Include="DTO\MesOrcamentoDTO.cs" />
     <Compile Include="DTO\NivelDTO.cs" />
-    <Compile Include="DTO\OrcadoDTO.cs" />
     <Compile Include="DTO\OutrosBaseDTO.cs" />
     <Compile Include="DTO\PATDTO.cs" />
     <Compile Include="DTO\PerfilAcessoDTO.cs" />
@@ -303,6 +301,12 @@
     <Compile Include="Models\Afastamento.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CalculoEventoBase.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CalculoEventoContratacao.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CargaHoraria.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -339,6 +343,9 @@
     <Compile Include="Models\Encargos.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EventoFolha.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Filial.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -373,9 +380,6 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Nivel.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Orcado.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OutrosBase.cs">

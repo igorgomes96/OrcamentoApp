@@ -39,7 +39,6 @@ namespace OrcamentoApp.Models
         public virtual DbSet<HEBase> HEBase { get; set; }
         public virtual DbSet<HEContratacao> HEContratacao { get; set; }
         public virtual DbSet<Nivel> Nivel { get; set; }
-        public virtual DbSet<Orcado> Orcado { get; set; }
         public virtual DbSet<OutrosBase> OutrosBase { get; set; }
         public virtual DbSet<PAT> PAT { get; set; }
         public virtual DbSet<ReajConvenioMed> ReajConvenioMed { get; set; }
@@ -70,5 +69,8 @@ namespace OrcamentoApp.Models
         public virtual DbSet<STH> STH { get; set; }
         public virtual DbSet<SolicitacaoAlteracaoCargo> SolicitacaoAlteracaoCargo { get; set; }
         public virtual DbSet<PerfilAcesso> PerfilAcesso { get; set; }
+        public virtual DbSet<CalculoEventoBase> CalculoEventoBase { get; set; }
+        public virtual DbSet<CalculoEventoContratacao> CalculoEventoContratacao { get; set; }
+        public virtual DbSet<EventoFolha> EventoFolha { get; set; }
     }
 }

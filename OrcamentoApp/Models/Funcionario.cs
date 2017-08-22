@@ -24,6 +24,7 @@ namespace OrcamentoApp.Models
             this.SolicitacaoAlteracaoSalario = new HashSet<SolicitacaoAlteracaoSalario>();
             this.SolicitacaoDesligamento = new HashSet<SolicitacaoDesligamento>();
             this.SolicitacaoAlteracaoCargo = new HashSet<SolicitacaoAlteracaoCargo>();
+            this.CalculosEventosBase = new HashSet<CalculoEventoBase>();
         }
     
         public string Matricula { get; set; }
@@ -76,5 +77,7 @@ namespace OrcamentoApp.Models
         public virtual ICollection<SolicitacaoDesligamento> SolicitacaoDesligamento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SolicitacaoAlteracaoCargo> SolicitacaoAlteracaoCargo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CalculoEventoBase> CalculosEventosBase { get; set; }
     }
 }

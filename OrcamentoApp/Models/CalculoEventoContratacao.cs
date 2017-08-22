@@ -12,14 +12,15 @@ namespace OrcamentoApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Orcado
+    public partial class CalculoEventoContratacao
     {
-        public string CentroCustoCod { get; set; }
-        public string ContaContabilCod { get; set; }
-        public System.DateTime Mes { get; set; }
-        public double Valor { get; set; }
+        public int CodContratacao { get; set; }
+        public string CodEvento { get; set; }
+        public int CodMesOrcamento { get; set; }
+        public Nullable<float> Valor { get; set; }
     
-        public virtual ContaContabil ContaContabil { get; set; }
-        public virtual CentroCusto CentroCusto { get; set; }
+        public virtual Contratacao Contratacao { get; set; }
+        public virtual EventoFolha EventoFolha { get; set; }
+        public virtual MesOrcamento MesOrcamento { get; set; }
     }
 }

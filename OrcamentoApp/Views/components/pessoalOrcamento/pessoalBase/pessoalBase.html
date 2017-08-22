@@ -59,8 +59,12 @@
 
     </div>
 
-    <div ng-if="!ct.funcionarios.length">
+    <div ng-if="ct.cr && !ct.funcionarios.length">
         Nenhum funcionário cadastrado no CR {{ct.cr.Codigo}}
+    </div>
+
+    <div ng-if="!ct.cr">
+        Selecione um CR
     </div>
 
 </ui-panel>

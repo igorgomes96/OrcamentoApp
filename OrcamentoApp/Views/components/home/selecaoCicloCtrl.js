@@ -1,6 +1,7 @@
 angular.module('orcamentoApp').controller('selecaoCicloCtrl', ['ciclosAPI', 'sharedDataService', '$state', function(ciclosAPI, sharedDataService, $state) {
 
 	var self = this;
+	self.ciclos = [];
 	self.ciclosAbertos = null;
 	self.ciclosFechados = [];
 	self.qtdaFechadosVisivel = 0;

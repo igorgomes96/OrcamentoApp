@@ -12,29 +12,25 @@ namespace OrcamentoApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MesOrcamento
+    public partial class EventoFolha
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MesOrcamento()
+        public EventoFolha()
         {
-            this.ContratacoesMeses = new HashSet<ContratacaoMes>();
-            this.Transferencias = new HashSet<Transferencia>();
             this.CalculosEventosBase = new HashSet<CalculoEventoBase>();
-            this.CalculosEventosContratacao = new HashSet<CalculoEventoContratacao>();
+            this.CalculosEventosContratacoes = new HashSet<CalculoEventoContratacao>();
+            this.ContaContabil = new HashSet<ContaContabil>();
         }
     
-        public int Codigo { get; set; }
-        public System.DateTime Mes { get; set; }
-        public Nullable<int> CicloCod { get; set; }
+        public string Codigo { get; set; }
+        public string NomeEvento { get; set; }
+        public string Descricao { get; set; }
     
-        public virtual Ciclo Ciclo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContratacaoMes> ContratacoesMeses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transferencia> Transferencias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CalculoEventoBase> CalculosEventosBase { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CalculoEventoContratacao> CalculosEventosContratacao { get; set; }
+        public virtual ICollection<CalculoEventoContratacao> CalculosEventosContratacoes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContaContabil> ContaContabil { get; set; }
     }
 }

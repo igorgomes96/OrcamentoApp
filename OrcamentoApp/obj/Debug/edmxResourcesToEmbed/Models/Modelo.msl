@@ -45,10 +45,9 @@
     <EntitySetMapping Name="ContaContabil">
       <EntityTypeMapping TypeName="OrcamentoModel.ContaContabil">
         <MappingFragment StoreEntitySet="ContaContabil">
+          <ScalarProperty Name="Grupo" ColumnName="Grupo" />
           <ScalarProperty Name="Codigo" ColumnName="Codigo" />
           <ScalarProperty Name="Nome" ColumnName="Nome" />
-          <ScalarProperty Name="Pacote" ColumnName="Pacote" />
-          <ScalarProperty Name="SubPacote" ColumnName="SubPacote" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -171,16 +170,6 @@
         <MappingFragment StoreEntitySet="Nivel">
           <ScalarProperty Name="NivelCod" ColumnName="Nivel" />
           <ScalarProperty Name="Nome" ColumnName="Nome" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Orcado">
-      <EntityTypeMapping TypeName="OrcamentoModel.Orcado">
-        <MappingFragment StoreEntitySet="Orcado">
-          <ScalarProperty Name="CentroCustoCod" ColumnName="CentroCustoCod" />
-          <ScalarProperty Name="ContaContabilCod" ColumnName="ContaContabilCod" />
-          <ScalarProperty Name="Mes" ColumnName="Mes" />
-          <ScalarProperty Name="Valor" ColumnName="Valor" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -515,5 +504,42 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CalculoEventoBase">
+      <EntityTypeMapping TypeName="OrcamentoModel.CalculoEventoBase">
+        <MappingFragment StoreEntitySet="CalculoEventoBase">
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="CodMesOrcamento" ColumnName="CodMesOrcamento" />
+          <ScalarProperty Name="MatriculaFuncionario" ColumnName="MatriculaFuncionario" />
+          <ScalarProperty Name="CodEvento" ColumnName="CodEvento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalculoEventoContratacao">
+      <EntityTypeMapping TypeName="OrcamentoModel.CalculoEventoContratacao">
+        <MappingFragment StoreEntitySet="CalculoEventoContratacao">
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="CodMesOrcamento" ColumnName="CodMesOrcamento" />
+          <ScalarProperty Name="CodEvento" ColumnName="CodEvento" />
+          <ScalarProperty Name="CodContratacao" ColumnName="CodContratacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventoFolha">
+      <EntityTypeMapping TypeName="OrcamentoModel.EventoFolha">
+        <MappingFragment StoreEntitySet="EventoFolha">
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="NomeEvento" ColumnName="NomeEvento" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="EventoFolhaConta" TypeName="OrcamentoModel.EventoFolhaConta" StoreEntitySet="EventoFolhaConta">
+      <EndProperty Name="EventoFolha">
+        <ScalarProperty Name="Codigo" ColumnName="CodEvento" />
+      </EndProperty>
+      <EndProperty Name="ContaContabil">
+        <ScalarProperty Name="Codigo" ColumnName="CodConta" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>
