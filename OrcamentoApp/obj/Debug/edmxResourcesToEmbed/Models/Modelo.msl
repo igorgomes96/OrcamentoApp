@@ -55,6 +55,7 @@
     <EntitySetMapping Name="Contratacao">
       <EntityTypeMapping TypeName="OrcamentoModel.Contratacao">
         <MappingFragment StoreEntitySet="Contratacao">
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
           <ScalarProperty Name="ConvenioPlanoCod" ColumnName="ConvenioPlanoCod" />
           <ScalarProperty Name="CicloCod" ColumnName="CicloCod" />
           <ScalarProperty Name="Codigo" ColumnName="Codigo" />
@@ -295,6 +296,7 @@
     <EntitySetMapping Name="Setor">
       <EntityTypeMapping TypeName="OrcamentoModel.Setor">
         <MappingFragment StoreEntitySet="Setor">
+          <ScalarProperty Name="NomeSetor2" ColumnName="NomeSetor2" />
           <ScalarProperty Name="SetorPai" ColumnName="SetorPai" />
           <ScalarProperty Name="Codigo" ColumnName="Codigo" />
           <ScalarProperty Name="Nivel" ColumnName="Nivel" />

@@ -26,6 +26,7 @@ namespace OrcamentoApp.Models
         public int Nivel { get; set; }
         public int Codigo { get; set; }
         public Nullable<int> SetorPai { get; set; }
+        public string NomeSetor2 { get; set; }
     
         public virtual Nivel NivelObj { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

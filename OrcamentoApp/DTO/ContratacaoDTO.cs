@@ -20,6 +20,7 @@ namespace OrcamentoApp.DTO
             EmpresaCod = c.EmpresaCod;
             CidadeNome = c.CidadeNome;
             CargoCod = c.CargoCod;
+            Salario = c.Salario;
         }
     
         public int Codigo { get; set; }
@@ -32,6 +33,7 @@ namespace OrcamentoApp.DTO
         public int EmpresaCod { get; set; }
         public string CidadeNome { get; set; }
         public Nullable<int> CargoCod { get; set; }
+        public float Salario { get; set; }
     
     }
 }

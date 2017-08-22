@@ -13,54 +13,6 @@
     <!-- /.navbar-header -->
 
     <ul class="nav navbar-top-links navbar-right">
-        <!-- <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href>
-                <span class="badge" ng-show="navCtrl.transferencias.length" style="background-color: #337ab7;">{{navCtrl.transferencias.length}}</span>
-                <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-messages" ng-show="navCtrl.transferencias.length">
-                <li ng-repeat="t in navCtrl.transferencias">
-                    <div style="padding:5px 10px;">
-                        <div>
-                            <strong>{{t.Funcionario.Nome}}</strong>
-                            <span class="pull-right text-muted">
-                                <em>{{t.DataSolicitacao | date:'dd-MMM-yy'}}</em>
-                            </span>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <strong>CR de Origem: </strong>{{t.Funcionario.CentroCustoCod}}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <strong>Data Início: </strong>{{t.DataInicio | date:'dd-MM-yyyy'}}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <strong>Solicitante: </strong>Solicitante X
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <strong>Ramal: </strong>30000
-                                    </div>
-                                </div>
-                                <div class="btn-group btn-group-xs pull-right" role="group">
-                                    <button class="btn btn-xs btn-success"><i class="fa fa-check"></i></button>
-                                    <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i></button>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <hr style="margin-bottom: 5px; margin-top: 0;">
-                </li>
-            </ul>
-        </li>-->
        
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href>
@@ -95,16 +47,11 @@
                             <a ui-sref="{{s.state}}" ng-class="{'active': s.state == navCtrl.stateAtual()}">{{s.texto}}</a>
                         </li>
                     </ul>
-                    <!-- /.nav-second-level -->
                 </li>
-
-                
                
             </ul>
         </div>
-        <!-- /.sidebar-collapse -->
     </div>
-    <!-- /.navbar-static-side -->
 </nav>
 
 <script type="text/javascript">

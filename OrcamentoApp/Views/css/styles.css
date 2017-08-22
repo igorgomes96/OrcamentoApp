@@ -90,6 +90,14 @@ td p.ellipsis {
     margin: 0;
 }
 
+td input.input-sm {
+	font-size: 14px;
+}
+
+td select.input-sm {
+	font-size: 14px;
+}
+
 td input[type="text"] {
 	padding-right: 3px;
 }

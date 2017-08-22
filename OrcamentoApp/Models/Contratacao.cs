@@ -32,6 +32,7 @@ namespace OrcamentoApp.Models
         public Nullable<int> CargoCod { get; set; }
         public int CicloCod { get; set; }
         public Nullable<int> ConvenioPlanoCod { get; set; }
+        public float Salario { get; set; }
     
         public virtual Cidade Cidade { get; set; }
         public virtual Filial Filial { get; set; }

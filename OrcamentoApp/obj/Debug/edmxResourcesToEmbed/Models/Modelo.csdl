@@ -80,6 +80,7 @@
     <NavigationProperty Name="ContratacaoMeses" Relationship="OrcamentoModel.contratacaomes_contratacao_fk" FromRole="Contratacao" ToRole="ContratacaoMes" />
     <Property Name="ConvenioPlanoCod" Type="Int32" />
     <NavigationProperty Name="ConvenioMed" Relationship="OrcamentoModel.contratacao_conveniomed_fk" FromRole="Contratacao" ToRole="ConvenioMed" />
+    <Property Name="Salario" Type="Single" Nullable="false" />
   </EntityType>
   <EntityType Name="DiasIndenizados">
     <Key>
@@ -970,6 +971,7 @@
     <NavigationProperty Name="SetorPaiObj" Relationship="OrcamentoModel.setor_setorpai_fk" FromRole="Setor1" ToRole="Setor" />
     <NavigationProperty Name="CentrosCustos" Relationship="OrcamentoModel.centrocusto_setor_fk" FromRole="Setor" ToRole="CentroCusto" />
     <NavigationProperty Name="Usuarios" Relationship="OrcamentoModel.usuario_setor_fk" FromRole="Setor" ToRole="Usuario" />
+    <Property Name="NomeSetor2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="setor_nivel_fk">
     <End Type="OrcamentoModel.Nivel" Role="Nivel" Multiplicity="1" />

@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using OrcamentoApp.Models;
+using OrcamentoApp.DTO;
 
 namespace OrcamentoApp.Controllers
 {
@@ -17,34 +18,38 @@ namespace OrcamentoApp.Controllers
         private Contexto db = new Contexto();
 
         // GET: api/PATs
-        public IQueryable<PAT> GetPAT()
+        public IEnumerable<PATDTO> GetPAT(int? sindicatoCod = null)
         {
-            return db.PAT;
+            return db.PAT.ToList()
+                .Where(x => sindicatoCod == null || x.SindicatoCod == sindicatoCod)
+                .Select(x => new PATDTO(x));
         }
 
         // GET: api/PATs/5
-        [ResponseType(typeof(PAT))]
-        public IHttpActionResult GetPAT(int id)
+        [Route("api/PATs/{sindicatoCod}/{cargaHoraria}")]
+        [ResponseType(typeof(PATDTO))]
+        public IHttpActionResult GetPAT(int sindicatoCod, int cargaHoraria)
         {
-            PAT pAT = db.PAT.Find(id);
+            PAT pAT = db.PAT.Find(cargaHoraria, sindicatoCod);
             if (pAT == null)
             {
                 return NotFound();
             }
 
-            return Ok(pAT);
+            return Ok(new PATDTO(pAT));
         }
 
         // PUT: api/PATs/5
+        [Route("api/PATs/{sindicatoCod}/{cargaHoraria}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPAT(int id, PAT pAT)
+        public IHttpActionResult PutPAT(int sindicatoCod, int cargaHoraria, PAT pAT)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != pAT.CargaHoraria)
+            if (cargaHoraria != pAT.CargaHoraria || sindicatoCod != pAT.SindicatoCod)
             {
                 return BadRequest();
             }
@@ -57,7 +62,7 @@ namespace OrcamentoApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PATExists(id))
+                if (!PATExists(sindicatoCod, cargaHoraria))
                 {
                     return NotFound();
                 }
@@ -71,7 +76,7 @@ namespace OrcamentoApp.Controllers
         }
 
         // POST: api/PATs
-        [ResponseType(typeof(PAT))]
+        [ResponseType(typeof(PATDTO))]
         public IHttpActionResult PostPAT(PAT pAT)
         {
             if (!ModelState.IsValid)
@@ -87,7 +92,7 @@ namespace OrcamentoApp.Controllers
             }
             catch (DbUpdateException)
             {
-                if (PATExists(pAT.CargaHoraria))
+                if (PATExists(pAT.SindicatoCod, pAT.CargaHoraria))
                 {
                     return Conflict();
                 }
@@ -97,23 +102,25 @@ namespace OrcamentoApp.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = pAT.CargaHoraria }, pAT);
+            return CreatedAtRoute("DefaultApi", new { id = pAT.CargaHoraria }, new PATDTO(pAT));
         }
 
         // DELETE: api/PATs/5
-        [ResponseType(typeof(PAT))]
-        public IHttpActionResult DeletePAT(int id)
+        [Route("api/PATs/{sindicatoCod}/{cargaHoraria}")]
+        [ResponseType(typeof(PATDTO))]
+        public IHttpActionResult DeletePAT(int sindicatoCod, int cargaHoraria)
         {
-            PAT pAT = db.PAT.Find(id);
+            PAT pAT = db.PAT.Find(cargaHoraria, sindicatoCod);
             if (pAT == null)
             {
                 return NotFound();
             }
 
+            PATDTO p = new PATDTO(pAT);
             db.PAT.Remove(pAT);
             db.SaveChanges();
 
-            return Ok(pAT);
+            return Ok(p);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +132,9 @@ namespace OrcamentoApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PATExists(int id)
+        private bool PATExists(int sindicatoCod, int cargaHoraria)
         {
-            return db.PAT.Count(e => e.CargaHoraria == id) > 0;
+            return db.PAT.Count(e => e.CargaHoraria == cargaHoraria && e.SindicatoCod == sindicatoCod) > 0;
         }
     }
 }

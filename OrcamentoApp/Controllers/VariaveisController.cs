@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using OrcamentoApp.Models;
+using OrcamentoApp.DTO;
 
 namespace OrcamentoApp.Controllers
 {
@@ -17,34 +18,38 @@ namespace OrcamentoApp.Controllers
         private Contexto db = new Contexto();
 
         // GET: api/Variaveis
-        public IQueryable<Variaveis> GetVariaveis()
+        public IEnumerable<VariaveisDTO> GetVariaveis(int? empresaCod = null, int? cargoCod = null)
         {
-            return db.Variaveis;
+            return db.Variaveis.ToList()
+                .Where(x => (empresaCod == null || x.EmpresaCod == empresaCod) && (cargoCod == null || x.CargoCod == cargoCod))
+                .Select(x => new VariaveisDTO(x));
         }
 
         // GET: api/Variaveis/5
-        [ResponseType(typeof(Variaveis))]
-        public IHttpActionResult GetVariaveis(int id)
+        [Route("api/Variaveis/{empresaCod}/{cargoCod}/{cargaHoraria}")]
+        [ResponseType(typeof(VariaveisDTO))]
+        public IHttpActionResult GetVariaveis(int empresaCod, int cargoCod, int cargaHoraria)
         {
-            Variaveis variaveis = db.Variaveis.Find(id);
+            Variaveis variaveis = db.Variaveis.Find(cargaHoraria, empresaCod, cargoCod);
             if (variaveis == null)
             {
                 return NotFound();
             }
 
-            return Ok(variaveis);
+            return Ok(new VariaveisDTO(variaveis));
         }
 
         // PUT: api/Variaveis/5
+        [Route("api/Variaveis/{empresaCod}/{cargoCod}/{cargaHoraria}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVariaveis(int id, Variaveis variaveis)
+        public IHttpActionResult PutVariaveis(int empresaCod, int cargoCod, int cargaHoraria, Variaveis variaveis)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != variaveis.CargaHoraria)
+            if (cargaHoraria != variaveis.CargaHoraria || cargoCod != variaveis.CargoCod || empresaCod != variaveis.EmpresaCod)
             {
                 return BadRequest();
             }
@@ -57,7 +62,7 @@ namespace OrcamentoApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VariaveisExists(id))
+                if (!VariaveisExists(empresaCod, cargoCod, cargaHoraria))
                 {
                     return NotFound();
                 }
@@ -71,7 +76,7 @@ namespace OrcamentoApp.Controllers
         }
 
         // POST: api/Variaveis
-        [ResponseType(typeof(Variaveis))]
+        [ResponseType(typeof(VariaveisDTO))]
         public IHttpActionResult PostVariaveis(Variaveis variaveis)
         {
             if (!ModelState.IsValid)
@@ -87,7 +92,7 @@ namespace OrcamentoApp.Controllers
             }
             catch (DbUpdateException)
             {
-                if (VariaveisExists(variaveis.CargaHoraria))
+                if (VariaveisExists(variaveis.EmpresaCod, variaveis.CargoCod, variaveis.CargaHoraria))
                 {
                     return Conflict();
                 }
@@ -97,23 +102,25 @@ namespace OrcamentoApp.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = variaveis.CargaHoraria }, variaveis);
+            return CreatedAtRoute("DefaultApi", new { id = variaveis.CargaHoraria }, new VariaveisDTO(variaveis));
         }
 
         // DELETE: api/Variaveis/5
-        [ResponseType(typeof(Variaveis))]
-        public IHttpActionResult DeleteVariaveis(int id)
+        [Route("api/Variaveis/{empresaCod}/{cargoCod}/{cargaHoraria}")]
+        [ResponseType(typeof(VariaveisDTO))]
+        public IHttpActionResult DeleteVariaveis(int empresaCod, int cargoCod, int cargaHoraria)
         {
-            Variaveis variaveis = db.Variaveis.Find(id);
+            Variaveis variaveis = db.Variaveis.Find(cargaHoraria, empresaCod, cargoCod);
             if (variaveis == null)
             {
                 return NotFound();
             }
 
+            VariaveisDTO v = new VariaveisDTO(variaveis);
             db.Variaveis.Remove(variaveis);
             db.SaveChanges();
 
-            return Ok(variaveis);
+            return Ok(v);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +132,9 @@ namespace OrcamentoApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool VariaveisExists(int id)
+        private bool VariaveisExists(int empresaCod, int cargoCod, int cargaHoraria)
         {
-            return db.Variaveis.Count(e => e.CargaHoraria == id) > 0;
+            return db.Variaveis.Count(e => e.CargaHoraria == cargaHoraria && e.EmpresaCod == empresaCod && e.CargoCod == cargoCod) > 0;
         }
     }
 }

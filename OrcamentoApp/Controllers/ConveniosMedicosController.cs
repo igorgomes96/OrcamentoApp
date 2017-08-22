@@ -25,7 +25,7 @@ namespace OrcamentoApp.Controllers
 
         // GET: api/ConveniosMedicos/5
         [ResponseType(typeof(ConvenioMedDTO))]
-        public IHttpActionResult GetConvenioMed(string id)
+        public IHttpActionResult GetConvenioMed(int id)
         {
             ConvenioMed convenioMed = db.ConvenioMed.Find(id);
             if (convenioMed == null)
@@ -103,7 +103,7 @@ namespace OrcamentoApp.Controllers
 
         // DELETE: api/ConveniosMedicos/5
         [ResponseType(typeof(ConvenioMedDTO))]
-        public IHttpActionResult DeleteConvenioMed(string id)
+        public IHttpActionResult DeleteConvenioMed(int id)
         {
             ConvenioMed convenioMed = db.ConvenioMed.Find(id);
             if (convenioMed == null)

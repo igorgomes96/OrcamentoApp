@@ -94,6 +94,7 @@
     <Property Name="CargoCod" Type="int" />
     <Property Name="CicloCod" Type="int" Nullable="false" />
     <Property Name="ConvenioPlanoCod" Type="int" />
+    <Property Name="Salario" Type="real" Nullable="false" />
   </EntityType>
   <EntityType Name="ContratacaoMes">
     <Key>
@@ -352,6 +353,7 @@
     <Property Name="Nivel" Type="int" Nullable="false" />
     <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SetorPai" Type="int" />
+    <Property Name="NomeSetor2" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="Sindicato">
     <Key>

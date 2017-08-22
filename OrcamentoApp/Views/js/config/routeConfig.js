@@ -11,6 +11,12 @@ angular.module('orcamentoApp').config(['$stateProvider', '$urlRouterProvider', '
         controller: 'autenticacaoCtrl as ct'
     })
 
+    .state('home', {
+        url: '/home',
+        templateUrl: 'Views/components/home/homeAdministrador.html'//,
+        //controller: 'autenticacaoCtrl as ct'
+    })
+
     .state('menuContainer', {
         templateUrl: 'Views/components/menuContainer/menuContainer.html'
     })
@@ -132,16 +138,48 @@ angular.module('orcamentoApp').config(['$stateProvider', '$urlRouterProvider', '
         }
     })
 
-    .state('menuContainer.premissasConvenioMedico', {
-        url: '/convenioMedico',
-        templateUrl: 'Views/components/premissas/convenioMedico/premissasConvenioMedico.html', 
-        controller: 'premissasConvenioMedicoCtrl as ct'
-    })
-
     .state('menuContainer.premissasSindicatos', {
         url: '/premissasReajustes',
-        templateUrl: 'Views/components/premissas/sindicatos/premissasSindicatos.html', 
-        controller: 'premissasSindicatosCtrl as ct'
+        views: {
+            '': {
+                templateUrl: 'Views/components/premissas/sindicatos/premissasSindicatosContainer.html', 
+                controller: 'premissasCtrl as ctMain'
+            },
+            'sindicatos@menuContainer.premissasSindicatos': {
+                templateUrl: 'Views/components/premissas/sindicatos/premissasSindicatos.html', 
+                controller: 'premissasSindicatosCtrl as ct'
+            }
+        }
+    })
+
+    .state('menuContainer.premissasBeneficios', {
+        url: '/premissasBeneficios',
+        views: {
+            '': {
+                templateUrl: 'Views/components/premissas/beneficios/premissasBeneficios.html', 
+                controller: 'premissasCtrl as ctMain'
+            },
+            'variaveis@menuContainer.premissasBeneficios': {
+                templateUrl: 'Views/components/premissas/beneficios/premissasVariaveis.html', 
+                controller: 'premissasVariaveisCtrl as ct'
+            },
+            'pat@menuContainer.premissasBeneficios': {
+                templateUrl: 'Views/components/premissas/beneficios/premissasPat.html', 
+                controller: 'premissasPatCtrl as ct'
+            },
+            'vt@menuContainer.premissasBeneficios': {
+                templateUrl: 'Views/components/premissas/beneficios/premissasVT.html', 
+                controller: 'premissasVTCtrl as ct'
+            },
+            'planosConvenio@menuContainer.premissasBeneficios': {
+                templateUrl: 'Views/components/premissas/beneficios/premissasConvenioMedico.html', 
+                controller: 'premissasConvenioMedicoCtrl as ct'
+            },
+            'reajustesConvenio@menuContainer.premissasBeneficios': {
+                templateUrl: 'Views/components/premissas/beneficios/premissasReajConvenioMedico.html', 
+                controller: 'premissasReajConvenioMedicoCtrl as ct'
+            }
+        }
     })
 
     .state('menuContainer.gestaoUsuarios', {

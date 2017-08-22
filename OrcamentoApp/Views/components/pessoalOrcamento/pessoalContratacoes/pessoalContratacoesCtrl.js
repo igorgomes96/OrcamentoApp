@@ -1,4 +1,4 @@
-angular.module('orcamentoApp').controller('pessoalContratacoesCtrl', ['messagesService', 'contratacoesAPI', 'contratacoesMesAPI', '$scope', 'sharedDataService', 'cargosAPI', 'filiaisAPI', 'cicloResolve' , function(messagesService, contratacoesAPI, contratacoesMesAPI, $scope, sharedDataService, cargosAPI, filiaisAPI, cicloResolve) {
+angular.module('orcamentoApp').controller('pessoalContratacoesCtrl', ['messagesService', 'contratacoesAPI', 'contratacoesMesAPI', '$scope', 'sharedDataService', 'cargosAPI', 'filiaisAPI', 'cicloResolve', 'numberFilter', function(messagesService, contratacoesAPI, contratacoesMesAPI, $scope, sharedDataService, cargosAPI, filiaisAPI, cicloResolve, numberFilter) {
 	var self = this;
 
 	self.filiais = [];
@@ -20,7 +20,8 @@ angular.module('orcamentoApp').controller('pessoalContratacoesCtrl', ['messagesS
             CargoCod: undefined,
             CicloCod: self.ciclo.Codigo,
             ConvenioPlanoMed: null,
-            ContratacaoMeses: getContratacoesMes(self.ciclo, null)
+            ContratacaoMeses: getContratacoesMes(self.ciclo, null),
+            Salario: null
         }
 
     }
@@ -53,13 +54,12 @@ angular.module('orcamentoApp').controller('pessoalContratacoesCtrl', ['messagesS
         contratacoesAPI.getContratacoes(ciclo, cr)
         .then(function(dado) {
 
-            self.contratacoes = dado.data;
-
-            self.contratacoes.forEach(function(x) {
-
+            dado.data.forEach(function(x) {
+                x.Salario = numberFilter(x.Salario, 2);
                 loadContratacoesMes(x);
-
             });
+
+            self.contratacoes = dado.data;
 
         });
 
