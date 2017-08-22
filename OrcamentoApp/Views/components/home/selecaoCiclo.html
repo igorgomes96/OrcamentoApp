@@ -84,52 +84,74 @@
 
 <h3>Novo Ciclo</h3>
 
-<div class="row">
-    <div class="col-md-3">
-        <label for="select-tipo">Tipo</label>
-        <select class="form-control"></select>
-    </div>
-</div>
+<form role="form" name="form-novo-ciclo">
 
-<div class="row">
-    <div class="col-md-3">
-        <div class="row">
-            <div class="col-md-12">
-                <label for="input-data-inicio">Data Início</label>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="select-tipo">Tipo</label>
+                <select class="form-control" ng-model="ct.novoCiclo.TipoCod" name="select-tipo" required>
+                    <option value="">(Selecione)</option>
+                    <option value="1">Orçamento</option>
+                    <option value="2">Real</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="input-data-inicio">Data Início</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="date" class="form-control" required name="input-data-inicio" id="input-data-inicio" ng-model="ct.novoCiclo.DataInicio">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="input-group">
-                    <input type="date" class="form-control" name="input-data-inicio" id="input-data-inicio" ng-model="ct.novoCiclo.DataInicio">
-                    <span class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                    </span>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="input-data-fim">Data Fim</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="date" class="form-control" required name="input-data-fim" id="input-data-fim" ng-model="ct.novoCiclo.DataFim">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-md-3">
-        <div class="row">
-            <div class="col-md-12">
-                <label for="input-data-fim">Data Fim</label>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="input-group">
-                    <input type="date" class="form-control" name="input-data-fim" id="input-data-fim" ng-model="ct.novoCiclo.DataFim">
-                    <span class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                    </span>
-                </div>
-            </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-12">
+            <button class="btn btn-primary" ng-disabled="formNovoCiclo.$invalid">Salvar</button>
         </div>
     </div>
-</div>
+
+    
+
+</form>
 
 
 
