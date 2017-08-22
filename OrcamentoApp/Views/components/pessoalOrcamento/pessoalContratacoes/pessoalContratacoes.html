@@ -70,7 +70,7 @@
                     <td>{{c.Motivo}}</td>
                     <td ng-repeat="m in c.ContratacaoMeses" class="text-center">{{m.Qtda}}</td>
                     <td>
-                        <button class="btn btn-danger btn-xs">
+                        <button class="btn btn-danger btn-xs" ng-show="c.ExcluirVisivel">
                             <i class="fa fa-remove" ng-click="ct.deleteContratacao(c.Codigo)"></i>
                         </button>
                     </td>

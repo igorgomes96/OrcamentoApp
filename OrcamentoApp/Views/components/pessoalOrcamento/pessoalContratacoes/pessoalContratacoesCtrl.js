@@ -1,4 +1,4 @@
-angular.module('orcamentoApp').controller('pessoalContratacoesCtrl', ['messagesService', 'contratacoesAPI', 'contratacoesMesAPI', '$scope', 'sharedDataService', 'cargosAPI', 'filiaisAPI', 'cicloResolve', 'numberFilter', function(messagesService, contratacoesAPI, contratacoesMesAPI, $scope, sharedDataService, cargosAPI, filiaisAPI, cicloResolve, numberFilter) {
+angular.module('orcamentoApp').controller('pessoalContratacoesCtrl', ['messagesService', 'contratacoesAPI', 'contratacoesMesAPI', '$scope', 'sharedDataService', 'cargosAPI', 'filiaisAPI', 'numberFilter', 'sharedDataService', function(messagesService, contratacoesAPI, contratacoesMesAPI, $scope, sharedDataService, cargosAPI, filiaisAPI, numberFilter, sharedDataService) {
 	var self = this;
 
 	self.filiais = [];
@@ -84,8 +84,9 @@ angular.module('orcamentoApp').controller('pessoalContratacoesCtrl', ['messagesS
         }).then(function(dado3) {
 
             contratacao.CargoNome = dado3.data.NomeCargo;
+            contratacao.ExcluirVisivel = true;  //Exibe o botão de excluir
             
-        } , function(error) { 
+        }, function(error) { 
             console.log(error); 
         });
 
@@ -108,6 +109,7 @@ angular.module('orcamentoApp').controller('pessoalContratacoesCtrl', ['messagesS
     self.saveContratacao = function(contratacao) {
         contratacao.CargoCod = contratacao.Cargo.CargoCod; 
         var contratacaoMeses = contratacao.ContratacaoMeses;
+        contratacao.Salario = numberFilter(contratacao.Salario, 2);
         delete contratacao.ContratacaoMeses;
         contratacoesAPI.postContratacao(contratacao)
         .then(function(dado) {
@@ -155,5 +157,5 @@ angular.module('orcamentoApp').controller('pessoalContratacoesCtrl', ['messagesS
     });
 
 
-	if (cicloResolve) self.ciclo = cicloResolve.data;
+	self.ciclo = sharedDataService.getCicloAtual();
 }]);

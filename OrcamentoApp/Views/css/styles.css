@@ -5,6 +5,16 @@
 	background-color: #f8f8f8;
 }
 
+.btn-voltar {
+	border-radius: 50%;
+	padding: 8px;
+	position: absolute;
+}
+
+.huge {
+	font-size: 30px;
+}
+
 a.list-group-item.ng-scope.active span.text-muted {
     color: #fff;
 }

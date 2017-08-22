@@ -1,4 +1,4 @@
-angular.module('orcamentoApp').controller('pessoalTransferenciasCtrl', ['mesesOrcamentoAPI', 'transferenciasAPI', 'cicloResolve','funcionariosAPI', 'cargosAPI', '$scope', '$rootScope', function(mesesOrcamentoAPI, transferenciasAPI, cicloResolve, funcionariosAPI, cargosAPI, $scope, $rootScope) {
+angular.module('orcamentoApp').controller('pessoalTransferenciasCtrl', ['mesesOrcamentoAPI', 'transferenciasAPI','funcionariosAPI', 'cargosAPI', '$scope', '$rootScope', 'sharedDataService', function(mesesOrcamentoAPI, transferenciasAPI, funcionariosAPI, cargosAPI, $scope, $rootScope, sharedDataService) {
 
 	var self = this;
 	self.ciclo = null;
@@ -79,6 +79,6 @@ angular.module('orcamentoApp').controller('pessoalTransferenciasCtrl', ['mesesOr
     });
 
 
-	if (cicloResolve) self.ciclo = cicloResolve.data;
+	self.ciclo = sharedDataService.getCicloAtual();
 
 }]);

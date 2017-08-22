@@ -8,7 +8,7 @@ angular.module('orcamentoApp').controller('autenticacaoCtrl', ['sharedDataServic
 		autenticacaoAPI.postLogin(user)
 		.then(function(dado) {
 			//$state.go("menuContainer.dashboard");
-			$state.go("home");
+			$state.go("containerHome.home");
 			localStorageService.saveUser(dado.data);
 			sharedDataService.setUsuario(dado.data);
 		}, function(error) {

@@ -11,10 +11,26 @@ angular.module('orcamentoApp').config(['$stateProvider', '$urlRouterProvider', '
         controller: 'autenticacaoCtrl as ct'
     })
 
-    .state('home', {
+    .state('containerHome', {
+        templateUrl: 'Views/components/home/containerHome.html'
+    })
+
+    .state('containerHome.home', {
         url: '/home',
-        templateUrl: 'Views/components/home/homeAdministrador.html'//,
-        //controller: 'autenticacaoCtrl as ct'
+        templateUrl: 'Views/components/home/homeAdministrador.html'/*,
+        controller: 'homeAdministradorCtrl as ct'*/
+    })
+
+    .state('containerHome.selecaoCiclo', {
+        url: '/selecaoCiclo',
+        templateUrl: 'Views/components/home/selecaoCiclo.html',
+        controller: 'selecaoCicloCtrl as ct'
+    })
+
+    .state('containerHome.selecaoModulo', {
+        url: '/selecaoModulo',
+        templateUrl: 'Views/components/home/selecaoModulo.html',
+        controller: 'selecaoModuloCtrl as ct'
     })
 
     .state('menuContainer', {
@@ -33,7 +49,7 @@ angular.module('orcamentoApp').config(['$stateProvider', '$urlRouterProvider', '
     })
 
     .state('menuContainer.pessoalOrcamento', {
-        url: '/pessoalOrcamento/:codCiclo',
+        url: '/pessoalOrcamento',
         views: {
             '': {
                 templateUrl: 'Views/components/pessoalOrcamento/pessoalOrcamento.html', 
@@ -55,13 +71,13 @@ angular.module('orcamentoApp').config(['$stateProvider', '$urlRouterProvider', '
                 templateUrl: 'Views/components/pessoalOrcamento/pessoalTransferencias/pessoalTransferenciasRecebidas.html', 
                 controller: 'pessoalTransferenciasCtrl as ct'
             }
-        },
+        }/*,
         resolve: {
             cicloResolve: function($stateParams, ciclosAPI) {
                 if (!$stateParams.codCiclo) return null;
                 return ciclosAPI.getCiclo($stateParams.codCiclo);
             }
-        }
+        }*/
     })
 
     .state('menuContainer.solicitacoesTH', {

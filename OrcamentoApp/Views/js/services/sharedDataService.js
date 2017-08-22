@@ -3,6 +3,7 @@ angular.module('orcamentoApp').service('sharedDataService', ['centrosCustosAPI',
     var self = this;
     
     var usuario = null;
+    var cicloAtual = null;
     
     self.setUsuario = function(user) {
         usuario = user;
@@ -21,7 +22,15 @@ angular.module('orcamentoApp').service('sharedDataService', ['centrosCustosAPI',
             self.setUsuario(usuario);
         }
         return usuario;
+    }
 
+    self.setCicloAtual = function(ciclo) {
+        cicloAtual = ciclo;
+    }
+
+
+    self.getCicloAtual = function() {
+        return cicloAtual;
     }
 
 }]);
