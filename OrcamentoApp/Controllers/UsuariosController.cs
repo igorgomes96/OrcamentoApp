@@ -86,7 +86,7 @@ namespace OrcamentoApp.Controllers
             {
                 db.SaveChanges();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 if (UsuarioExists(usuario.Login))
                 {

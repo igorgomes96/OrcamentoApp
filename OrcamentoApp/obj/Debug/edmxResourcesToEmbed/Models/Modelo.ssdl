@@ -88,7 +88,7 @@
     <Key>
       <PropertyRef Name="NomeCidade" />
     </Key>
-    <Property Name="NomeCidade" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="NomeCidade" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="VT" Type="float" Nullable="false" />
     <Property Name="EhFilial" Type="bit" Nullable="false" />
   </EntityType>
@@ -111,7 +111,7 @@
     <Property Name="CentroCustoCod" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="CargaHoraria" Type="int" Nullable="false" />
     <Property Name="EmpresaCod" Type="int" Nullable="false" />
-    <Property Name="CidadeNome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CidadeNome" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="CargoCod" Type="int" />
     <Property Name="CicloCod" Type="int" Nullable="false" />
     <Property Name="ConvenioPlanoCod" Type="int" />
@@ -138,6 +138,15 @@
     <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Plano2" Type="varchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="ConvenioOdontologico">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Plano" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Valor" Type="real" Nullable="false" />
+    <Property Name="ValorDependentes" Type="real" Nullable="false" />
+  </EntityType>
   <EntityType Name="DiasIndenizados">
     <Key>
       <PropertyRef Name="Anos" />
@@ -161,8 +170,12 @@
     <Property Name="Ferias" Type="float" Nullable="false" />
     <Property Name="FGTS" Type="float" Nullable="false" />
     <Property Name="INSS" Type="float" Nullable="false" />
-    <Property Name="SistemaS" Type="float" Nullable="false" />
     <Property Name="EmpresaCod" Type="int" Nullable="false" />
+    <Property Name="INCRA" Type="real" />
+    <Property Name="SalEducacao" Type="real" />
+    <Property Name="Sebrae" Type="real" />
+    <Property Name="Senai" Type="real" />
+    <Property Name="SESI" Type="real" />
   </EntityType>
   <EntityType Name="EventoFolha">
     <Key>
@@ -171,13 +184,6 @@
     <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="NomeEvento" Type="varchar" MaxLength="80" Nullable="false" />
     <Property Name="Descricao" Type="nvarchar" MaxLength="4000" />
-  </EntityType>
-  <EntityType Name="EventoFolhaConta">
-    <Key>
-      <PropertyRef Name="CodEvento" />
-      <PropertyRef Name="CodConta" />
-    </Key>
-    <Property Name="CodEvento" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="CodConta" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="Filial">
@@ -186,7 +192,7 @@
       <PropertyRef Name="CidadeNome" />
     </Key>
     <Property Name="EmpresaCod" Type="int" Nullable="false" />
-    <Property Name="CidadeNome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CidadeNome" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="AvisoPrevio" Type="float" />
     <Property Name="FAP" Type="float" />
     <Property Name="SindicatoCod" Type="int" />
@@ -200,42 +206,44 @@
     <Property Name="AuxCreche" Type="float" Nullable="false" />
     <Property Name="AuxEducacao" Type="float" Nullable="false" />
     <Property Name="AuxFilhoExc" Type="float" Nullable="false" />
-    <Property Name="AuxPrevidencia" Type="float" Nullable="false" />
+    <Property Name="PrevidenciaPrivada" Type="float" Nullable="false" />
     <Property Name="AuxSeguro" Type="float" Nullable="false" />
     <Property Name="AvosFerias" Type="int" Nullable="false" />
-    <Property Name="DataAdmissao" Type="datetime" Nullable="false" />
+    <Property Name="DataAdmissao" Type="date" Nullable="false" />
     <Property Name="Gratificacoes" Type="float" Nullable="false" />
-    <Property Name="Insalubridade" Type="float" Nullable="false" />
     <Property Name="MesDesligamento" Type="datetime" />
     <Property Name="MesFerias" Type="datetime" />
     <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="Periculosidade" Type="bit" Nullable="false" />
-    <Property Name="QtdaDependentes" Type="int" />
-    <Property Name="QtdaDiasVendidosFerias" Type="int" />
+    <Property Name="QtdaDependentes" Type="int" Nullable="false" />
+    <Property Name="QtdaDiasVendidosFerias" Type="int" Nullable="false" />
     <Property Name="RemProdutividade" Type="float" />
     <Property Name="Salario" Type="float" Nullable="false" />
-    <Property Name="TipoAviso" Type="varchar" MaxLength="255" />
+    <Property Name="TipoAviso" Type="varchar" MaxLength="20" />
     <Property Name="VT" Type="float" Nullable="false" />
     <Property Name="CentroCustoCod" Type="varchar" MaxLength="15" Nullable="false" />
-    <Property Name="CidadeNome" Type="varchar" MaxLength="255" />
+    <Property Name="CidadeNome" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="EmpresaCod" Type="int" Nullable="false" />
     <Property Name="CargaHoraria" Type="int" Nullable="false" />
     <Property Name="Situacao" Type="varchar" MaxLength="60" />
-    <Property Name="CargoCod" Type="int" />
+    <Property Name="CargoCod" Type="int" Nullable="false" />
     <Property Name="SindicatoCod" Type="int" Nullable="false" />
     <Property Name="ConvenioMedCod" Type="int" />
     <Property Name="Nome2" Type="varchar" MaxLength="60" />
+    <Property Name="ValorConvMedico" Type="real" Nullable="false" />
+    <Property Name="ValorConvOdontologico" Type="real" Nullable="false" />
+    <Property Name="AdCondutor" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="HEBase">
     <Key>
       <PropertyRef Name="FuncionarioMatricula" />
-      <PropertyRef Name="Mes" />
       <PropertyRef Name="PercentualHoras" />
+      <PropertyRef Name="CodMesOrcamento" />
     </Key>
     <Property Name="FuncionarioMatricula" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="Mes" Type="datetime" Nullable="false" />
     <Property Name="PercentualHoras" Type="float" Nullable="false" />
     <Property Name="QtdaHoras" Type="int" />
+    <Property Name="CodMesOrcamento" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="HEContratacao">
     <Key>
@@ -291,6 +299,7 @@
     <Property Name="CargaHoraria" Type="int" Nullable="false" />
     <Property Name="Valor" Type="float" Nullable="false" />
     <Property Name="SindicatoCod" Type="int" Nullable="false" />
+    <Property Name="PercentualDesconto" Type="real" />
   </EntityType>
   <EntityType Name="PerfilAcesso">
     <Key>
@@ -319,6 +328,7 @@
   <EntityType Name="Reajuste">
     <Key>
       <PropertyRef Name="Ano" />
+      <PropertyRef Name="MesReajuste" />
       <PropertyRef Name="SindicatoCod" />
     </Key>
     <Property Name="Ano" Type="int" Nullable="false" />
@@ -349,7 +359,7 @@
     <Property Name="CargoCod" Type="int" Nullable="false" />
     <Property Name="CargaHoraria" Type="int" Nullable="false" />
     <Property Name="EmpresaCod" Type="int" Nullable="false" />
-    <Property Name="CidadeNome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CidadeNome" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="Faixa1" Type="real" />
     <Property Name="Faixa2" Type="real" />
     <Property Name="Faixa3" Type="real" />
@@ -415,7 +425,7 @@
       <PropertyRef Name="SolicitacaoCod" />
     </Key>
     <Property Name="SolicitacaoCod" Type="int" Nullable="false" />
-    <Property Name="CidadeNome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CidadeNome" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="CargoCod" Type="int" Nullable="false" />
     <Property Name="CargaHoraria" Type="int" Nullable="false" />
     <Property Name="EmpresaCod" Type="int" Nullable="false" />
@@ -500,6 +510,17 @@
     </Key>
     <Property Name="UsuarioLogin" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="PermissaoNome" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ValoresAbertosBase">
+    <Key>
+      <PropertyRef Name="CodEvento" />
+      <PropertyRef Name="CodMesOrcamento" />
+      <PropertyRef Name="MatriculaFuncionario" />
+    </Key>
+    <Property Name="CodEvento" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CodMesOrcamento" Type="int" Nullable="false" />
+    <Property Name="MatriculaFuncionario" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Valor" Type="real" Nullable="false" />
   </EntityType>
   <EntityType Name="Variaveis">
     <Key>
@@ -719,18 +740,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="contratacao_cidade_fk">
-    <End Role="Cidade" Type="Self.Cidade" Multiplicity="1" />
-    <End Role="Contratacao" Type="Self.Contratacao" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cidade">
-        <PropertyRef Name="NomeCidade" />
-      </Principal>
-      <Dependent Role="Contratacao">
-        <PropertyRef Name="CidadeNome" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="contratacao_conveniomed_fk">
     <End Role="ConvenioMed" Type="Self.ConvenioMed" Multiplicity="0..1" />
     <End Role="Contratacao" Type="Self.Contratacao" Multiplicity="*" />
@@ -809,27 +818,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="eventofolhaconta_conta_fk">
+  <Association Name="eventofolha_contacontabil_fk">
     <End Role="ContaContabil" Type="Self.ContaContabil" Multiplicity="1" />
-    <End Role="EventoFolhaConta" Type="Self.EventoFolhaConta" Multiplicity="*" />
+    <End Role="EventoFolha" Type="Self.EventoFolha" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ContaContabil">
         <PropertyRef Name="Codigo" />
       </Principal>
-      <Dependent Role="EventoFolhaConta">
+      <Dependent Role="EventoFolha">
         <PropertyRef Name="CodConta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="eventofolhaconta_evento_fk">
-    <End Role="EventoFolha" Type="Self.EventoFolha" Multiplicity="1" />
-    <End Role="EventoFolhaConta" Type="Self.EventoFolhaConta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="EventoFolha">
-        <PropertyRef Name="Codigo" />
-      </Principal>
-      <Dependent Role="EventoFolhaConta">
-        <PropertyRef Name="CodEvento" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -881,18 +878,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="funcionario_cidade_fk">
-    <End Role="Cidade" Type="Self.Cidade" Multiplicity="0..1" />
-    <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cidade">
-        <PropertyRef Name="NomeCidade" />
-      </Principal>
-      <Dependent Role="Funcionario">
-        <PropertyRef Name="CidadeNome" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="funcionario_conveniomed_fk">
     <End Role="ConvenioMed" Type="Self.ConvenioMed" Multiplicity="0..1" />
     <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="*" />
@@ -906,7 +891,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="funcionario_filial_fk">
-    <End Role="Filial" Type="Self.Filial" Multiplicity="0..1" />
+    <End Role="Filial" Type="Self.Filial" Multiplicity="1" />
     <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Filial">
@@ -932,7 +917,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="funcionario_variaveis_fk">
-    <End Role="Variaveis" Type="Self.Variaveis" Multiplicity="0..1" />
+    <End Role="Variaveis" Type="Self.Variaveis" Multiplicity="1" />
     <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Variaveis">
@@ -956,6 +941,18 @@
       </Principal>
       <Dependent Role="HEBase">
         <PropertyRef Name="FuncionarioMatricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hebase_mesorcamento_fk">
+    <End Role="MesOrcamento" Type="Self.MesOrcamento" Multiplicity="1" />
+    <End Role="HEBase" Type="Self.HEBase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MesOrcamento">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="HEBase">
+        <PropertyRef Name="CodMesOrcamento" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1399,6 +1396,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="valoresabertosbase_eventofolha_fk">
+    <End Role="EventoFolha" Type="Self.EventoFolha" Multiplicity="1" />
+    <End Role="ValoresAbertosBase" Type="Self.ValoresAbertosBase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventoFolha">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ValoresAbertosBase">
+        <PropertyRef Name="CodEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="valoresabertosbase_funcionario_fk">
+    <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
+    <End Role="ValoresAbertosBase" Type="Self.ValoresAbertosBase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Funcionario">
+        <PropertyRef Name="Matricula" />
+      </Principal>
+      <Dependent Role="ValoresAbertosBase">
+        <PropertyRef Name="MatriculaFuncionario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="valoresabertosbase_mesorcamento_fk">
+    <End Role="MesOrcamento" Type="Self.MesOrcamento" Multiplicity="1" />
+    <End Role="ValoresAbertosBase" Type="Self.ValoresAbertosBase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MesOrcamento">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ValoresAbertosBase">
+        <PropertyRef Name="CodMesOrcamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="variaveis_cargahoraria_fk">
     <End Role="CargaHoraria" Type="Self.CargaHoraria" Multiplicity="1" />
     <End Role="Variaveis" Type="Self.Variaveis" Multiplicity="*" />
@@ -1449,11 +1482,11 @@
     <EntitySet Name="Contratacao" EntityType="Self.Contratacao" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ContratacaoMes" EntityType="Self.ContratacaoMes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ConvenioMed" EntityType="Self.ConvenioMed" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConvenioOdontologico" EntityType="Self.ConvenioOdontologico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DiasIndenizados" EntityType="Self.DiasIndenizados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Encargos" EntityType="Self.Encargos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EventoFolha" EntityType="Self.EventoFolha" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="EventoFolhaConta" EntityType="Self.EventoFolhaConta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Filial" EntityType="Self.Filial" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Funcionario" EntityType="Self.Funcionario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HEBase" EntityType="Self.HEBase" Schema="dbo" store:Type="Tables" />
@@ -1484,6 +1517,7 @@
     <EntitySet Name="Transferencia" EntityType="Self.Transferencia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsuarioPermissao" EntityType="Self.UsuarioPermissao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ValoresAbertosBase" EntityType="Self.ValoresAbertosBase" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Variaveis" EntityType="Self.Variaveis" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="act_solicitacaoth_fk" Association="Self.act_solicitacaoth_fk">
       <End Role="SolicitacaoTH" EntitySet="SolicitacaoTH" />
@@ -1553,10 +1587,6 @@
       <End Role="Ciclo" EntitySet="Ciclo" />
       <End Role="Contratacao" EntitySet="Contratacao" />
     </AssociationSet>
-    <AssociationSet Name="contratacao_cidade_fk" Association="Self.contratacao_cidade_fk">
-      <End Role="Cidade" EntitySet="Cidade" />
-      <End Role="Contratacao" EntitySet="Contratacao" />
-    </AssociationSet>
     <AssociationSet Name="contratacao_conveniomed_fk" Association="Self.contratacao_conveniomed_fk">
       <End Role="ConvenioMed" EntitySet="ConvenioMed" />
       <End Role="Contratacao" EntitySet="Contratacao" />
@@ -1581,13 +1611,9 @@
       <End Role="Empresa" EntitySet="Empresa" />
       <End Role="Encargos" EntitySet="Encargos" />
     </AssociationSet>
-    <AssociationSet Name="eventofolhaconta_conta_fk" Association="Self.eventofolhaconta_conta_fk">
+    <AssociationSet Name="eventofolha_contacontabil_fk" Association="Self.eventofolha_contacontabil_fk">
       <End Role="ContaContabil" EntitySet="ContaContabil" />
-      <End Role="EventoFolhaConta" EntitySet="EventoFolhaConta" />
-    </AssociationSet>
-    <AssociationSet Name="eventofolhaconta_evento_fk" Association="Self.eventofolhaconta_evento_fk">
       <End Role="EventoFolha" EntitySet="EventoFolha" />
-      <End Role="EventoFolhaConta" EntitySet="EventoFolhaConta" />
     </AssociationSet>
     <AssociationSet Name="filial_cidade_fk" Association="Self.filial_cidade_fk">
       <End Role="Cidade" EntitySet="Cidade" />
@@ -1603,10 +1629,6 @@
     </AssociationSet>
     <AssociationSet Name="funcionario_centrocusto_fk" Association="Self.funcionario_centrocusto_fk">
       <End Role="CentroCusto" EntitySet="CentroCusto" />
-      <End Role="Funcionario" EntitySet="Funcionario" />
-    </AssociationSet>
-    <AssociationSet Name="funcionario_cidade_fk" Association="Self.funcionario_cidade_fk">
-      <End Role="Cidade" EntitySet="Cidade" />
       <End Role="Funcionario" EntitySet="Funcionario" />
     </AssociationSet>
     <AssociationSet Name="funcionario_conveniomed_fk" Association="Self.funcionario_conveniomed_fk">
@@ -1627,6 +1649,10 @@
     </AssociationSet>
     <AssociationSet Name="hebase_funcionario_fk" Association="Self.hebase_funcionario_fk">
       <End Role="Funcionario" EntitySet="Funcionario" />
+      <End Role="HEBase" EntitySet="HEBase" />
+    </AssociationSet>
+    <AssociationSet Name="hebase_mesorcamento_fk" Association="Self.hebase_mesorcamento_fk">
+      <End Role="MesOrcamento" EntitySet="MesOrcamento" />
       <End Role="HEBase" EntitySet="HEBase" />
     </AssociationSet>
     <AssociationSet Name="hecontratacao_contratacao_fk" Association="Self.hecontratacao_contratacao_fk">
@@ -1768,6 +1794,18 @@
     <AssociationSet Name="usuariopermissao_usuario_fk" Association="Self.usuariopermissao_usuario_fk">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="UsuarioPermissao" EntitySet="UsuarioPermissao" />
+    </AssociationSet>
+    <AssociationSet Name="valoresabertosbase_eventofolha_fk" Association="Self.valoresabertosbase_eventofolha_fk">
+      <End Role="EventoFolha" EntitySet="EventoFolha" />
+      <End Role="ValoresAbertosBase" EntitySet="ValoresAbertosBase" />
+    </AssociationSet>
+    <AssociationSet Name="valoresabertosbase_funcionario_fk" Association="Self.valoresabertosbase_funcionario_fk">
+      <End Role="Funcionario" EntitySet="Funcionario" />
+      <End Role="ValoresAbertosBase" EntitySet="ValoresAbertosBase" />
+    </AssociationSet>
+    <AssociationSet Name="valoresabertosbase_mesorcamento_fk" Association="Self.valoresabertosbase_mesorcamento_fk">
+      <End Role="MesOrcamento" EntitySet="MesOrcamento" />
+      <End Role="ValoresAbertosBase" EntitySet="ValoresAbertosBase" />
     </AssociationSet>
     <AssociationSet Name="variaveis_cargahoraria_fk" Association="Self.variaveis_cargahoraria_fk">
       <End Role="CargaHoraria" EntitySet="CargaHoraria" />

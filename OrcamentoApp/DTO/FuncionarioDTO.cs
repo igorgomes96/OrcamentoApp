@@ -14,12 +14,11 @@ namespace OrcamentoApp.DTO
             AuxCreche = f.AuxCreche;
             AuxEducacao = f.AuxEducacao;
             AuxFilhoExc = f.AuxFilhoExc;
-            AuxPrevidencia = f.AuxPrevidencia;
+            PrevidenciaPrivada = f.PrevidenciaPrivada;
             AuxSeguro = f.AuxSeguro;
             AvosFerias = f.AvosFerias;
             DataAdmissao = f.DataAdmissao;
             Gratificacoes = f.Gratificacoes;
-            Insalubridade = f.Insalubridade;
             MesDesligamento = f.MesDesligamento;
             MesFerias = f.MesFerias;
             Nome = f.Nome;
@@ -44,12 +43,11 @@ namespace OrcamentoApp.DTO
         public double AuxCreche { get; set; }
         public double AuxEducacao { get; set; }
         public double AuxFilhoExc { get; set; }
-        public double AuxPrevidencia { get; set; }
+        public double PrevidenciaPrivada { get; set; }
         public double AuxSeguro { get; set; }
         public int AvosFerias { get; set; }
         public System.DateTime DataAdmissao { get; set; }
         public double Gratificacoes { get; set; }
-        public double Insalubridade { get; set; }
         public Nullable<System.DateTime> MesDesligamento { get; set; }
         public Nullable<System.DateTime> MesFerias { get; set; }
         public string Nome { get; set; }

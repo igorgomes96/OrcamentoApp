@@ -34,20 +34,16 @@ namespace OrcamentoApp.Models
         public virtual DbSet<DiasIndenizados> DiasIndenizados { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<Encargos> Encargos { get; set; }
-        public virtual DbSet<Filial> Filial { get; set; }
-        public virtual DbSet<Funcionario> Funcionario { get; set; }
         public virtual DbSet<HEBase> HEBase { get; set; }
         public virtual DbSet<HEContratacao> HEContratacao { get; set; }
         public virtual DbSet<Nivel> Nivel { get; set; }
         public virtual DbSet<OutrosBase> OutrosBase { get; set; }
         public virtual DbSet<PAT> PAT { get; set; }
         public virtual DbSet<ReajConvenioMed> ReajConvenioMed { get; set; }
-        public virtual DbSet<Reajuste> Reajuste { get; set; }
         public virtual DbSet<Receita> Receita { get; set; }
         public virtual DbSet<SalarioMinimo> SalarioMinimo { get; set; }
         public virtual DbSet<Sindicato> Sindicato { get; set; }
         public virtual DbSet<Transferencia> Transferencia { get; set; }
-        public virtual DbSet<Variaveis> Variaveis { get; set; }
         public virtual DbSet<Sessao> Sessao { get; set; }
         public virtual DbSet<Permissao> Permissao { get; set; }
         public virtual DbSet<Setor> Setor { get; set; }
@@ -72,5 +68,11 @@ namespace OrcamentoApp.Models
         public virtual DbSet<CalculoEventoBase> CalculoEventoBase { get; set; }
         public virtual DbSet<CalculoEventoContratacao> CalculoEventoContratacao { get; set; }
         public virtual DbSet<EventoFolha> EventoFolha { get; set; }
+        public virtual DbSet<ConvenioOdontologico> ConvenioOdontologico { get; set; }
+        public virtual DbSet<ValoresAbertosBase> ValoresAbertosBase { get; set; }
+        public virtual DbSet<Filial> Filial { get; set; }
+        public virtual DbSet<Variaveis> Variaveis { get; set; }
+        public virtual DbSet<Reajuste> Reajuste { get; set; }
+        public virtual DbSet<Funcionario> Funcionario { get; set; }
     }
 }

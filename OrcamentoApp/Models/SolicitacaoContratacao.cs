@@ -25,8 +25,8 @@ namespace OrcamentoApp.Models
         public System.DateTime DataPrevista { get; set; }
     
         public virtual CentroCusto CentroCusto { get; set; }
+        public virtual SolicitacaoTH SolicitacaoTH { get; set; }
         public virtual Filial Filial { get; set; }
         public virtual Variaveis Variaveis { get; set; }
-        public virtual SolicitacaoTH SolicitacaoTH { get; set; }
     }
 }

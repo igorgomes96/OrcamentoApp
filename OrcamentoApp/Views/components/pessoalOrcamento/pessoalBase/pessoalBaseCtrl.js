@@ -3,6 +3,8 @@ angular.module('orcamentoApp').controller('pessoalBaseCtrl', ['messagesService',
 
     self.cr = null;
     self.funcionarioTransf = null;
+    self.aba = "Associados";
+    
 
 	var loadFuncionarios = function(cr) {
         funcionariosAPI.getFuncionarios(cr)

@@ -17,10 +17,10 @@ namespace OrcamentoApp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Filial()
         {
-            this.Contratacoes = new HashSet<Contratacao>();
-            this.Funcionarios = new HashSet<Funcionario>();
+            this.Contratacao = new HashSet<Contratacao>();
             this.Salario = new HashSet<Salario>();
             this.SolicitacaoContratacao = new HashSet<SolicitacaoContratacao>();
+            this.Funcionario = new HashSet<Funcionario>();
         }
     
         public int EmpresaCod { get; set; }
@@ -32,14 +32,14 @@ namespace OrcamentoApp.Models
     
         public virtual Cidade Cidade { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contratacao> Contratacoes { get; set; }
+        public virtual ICollection<Contratacao> Contratacao { get; set; }
         public virtual Empresa Empresa { get; set; }
         public virtual Sindicato Sindicato { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Funcionario> Funcionarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Salario> Salario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SolicitacaoContratacao> SolicitacaoContratacao { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Funcionario> Funcionario { get; set; }
     }
 }

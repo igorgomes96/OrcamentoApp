@@ -15,7 +15,6 @@ namespace OrcamentoApp.DTO
             Ferias = e.Ferias;
             FGTS = e.FGTS;
             INSS = e.INSS;
-            SistemaS = e.SistemaS;
             EmpresaCod = e.EmpresaCod;
         }
         public double Enc13 { get; set; }

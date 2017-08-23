@@ -17,12 +17,12 @@ namespace OrcamentoApp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Variaveis()
         {
-            this.Contratacoes = new HashSet<Contratacao>();
-            this.Funcionarios = new HashSet<Funcionario>();
+            this.Contratacao = new HashSet<Contratacao>();
             this.Salario = new HashSet<Salario>();
-            this.SolicitacaoContratacao = new HashSet<SolicitacaoContratacao>();
             this.SolicitacaoAlteracaoCargo = new HashSet<SolicitacaoAlteracaoCargo>();
             this.SolicitacaoAlteracaoCargo1 = new HashSet<SolicitacaoAlteracaoCargo>();
+            this.SolicitacaoContratacao = new HashSet<SolicitacaoContratacao>();
+            this.Funcionario = new HashSet<Funcionario>();
         }
     
         public int CargaHoraria { get; set; }
@@ -33,20 +33,20 @@ namespace OrcamentoApp.Models
         public Nullable<double> PR { get; set; }
         public int CargoCod { get; set; }
     
-        public virtual CargaHoraria CargaHorariaObj { get; set; }
+        public virtual CargaHoraria CargaHoraria1 { get; set; }
         public virtual Cargo Cargo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contratacao> Contratacoes { get; set; }
+        public virtual ICollection<Contratacao> Contratacao { get; set; }
         public virtual Empresa Empresa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Funcionario> Funcionarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Salario> Salario { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SolicitacaoContratacao> SolicitacaoContratacao { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SolicitacaoAlteracaoCargo> SolicitacaoAlteracaoCargo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SolicitacaoAlteracaoCargo> SolicitacaoAlteracaoCargo1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SolicitacaoContratacao> SolicitacaoContratacao { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Funcionario> Funcionario { get; set; }
     }
 }

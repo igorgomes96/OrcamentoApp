@@ -359,7 +359,7 @@ namespace OrcamentoApp.Excel
 
                     encargo.Enc13 = float.Parse(r["13º Salário"].ToString());
                     encargo.Ferias = float.Parse(r["Férias"].ToString());
-                    encargo.SistemaS = float.Parse(r["Sistema S"].ToString());
+                    //encargo.SistemaS = float.Parse(r["Sistema S"].ToString());
                     encargo.FGTS = float.Parse(r["FGTS"].ToString());
                     encargo.INSS = float.Parse(r["INSS"].ToString());
                     encargo.AvisoPrevio = float.Parse(r["Aviso Prévio"].ToString());

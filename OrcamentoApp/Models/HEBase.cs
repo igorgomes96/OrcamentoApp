@@ -15,10 +15,11 @@ namespace OrcamentoApp.Models
     public partial class HEBase
     {
         public string FuncionarioMatricula { get; set; }
-        public System.DateTime Mes { get; set; }
         public double PercentualHoras { get; set; }
         public Nullable<int> QtdaHoras { get; set; }
+        public int CodMesOrcamento { get; set; }
     
+        public virtual MesOrcamento MesOrcamento { get; set; }
         public virtual Funcionario Funcionario { get; set; }
     }
 }

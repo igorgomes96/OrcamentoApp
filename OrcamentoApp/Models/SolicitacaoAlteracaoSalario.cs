@@ -19,7 +19,7 @@ namespace OrcamentoApp.Models
         public float SalarioAnterior { get; set; }
         public float SalarioNovo { get; set; }
     
-        public virtual Funcionario Funcionario { get; set; }
         public virtual SolicitacaoTH SolicitacaoTH { get; set; }
+        public virtual Funcionario Funcionario { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace OrcamentoApp.Models
         public string Motivo { get; set; }
         public string TipoAviso { get; set; }
     
-        public virtual Funcionario Funcionario { get; set; }
         public virtual SolicitacaoTH SolicitacaoTH { get; set; }
+        public virtual Funcionario Funcionario { get; set; }
     }
 }

@@ -21,6 +21,8 @@ namespace OrcamentoApp.Models
             this.Transferencias = new HashSet<Transferencia>();
             this.CalculosEventosBase = new HashSet<CalculoEventoBase>();
             this.CalculosEventosContratacao = new HashSet<CalculoEventoContratacao>();
+            this.HEBase = new HashSet<HEBase>();
+            this.ValoresAbertosBase = new HashSet<ValoresAbertosBase>();
         }
     
         public int Codigo { get; set; }
@@ -36,5 +38,9 @@ namespace OrcamentoApp.Models
         public virtual ICollection<CalculoEventoBase> CalculosEventosBase { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CalculoEventoContratacao> CalculosEventosContratacao { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HEBase> HEBase { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ValoresAbertosBase> ValoresAbertosBase { get; set; }
     }
 }

@@ -17,9 +17,9 @@ namespace OrcamentoApp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empresa()
         {
-            this.Filiais = new HashSet<Filial>();
-            this.Variaveis = new HashSet<Variaveis>();
             this.CentroCusto = new HashSet<CentroCusto>();
+            this.Filial = new HashSet<Filial>();
+            this.Variaveis = new HashSet<Variaveis>();
         }
     
         public int Codigo { get; set; }
@@ -27,10 +27,10 @@ namespace OrcamentoApp.Models
     
         public virtual Encargos Encargos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Filial> Filiais { get; set; }
+        public virtual ICollection<CentroCusto> CentroCusto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Filial> Filial { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Variaveis> Variaveis { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CentroCusto> CentroCusto { get; set; }
     }
 }

@@ -35,9 +35,6 @@ namespace OrcamentoApp.Models
         public Nullable<int> ConvenioPlanoCod { get; set; }
         public float Salario { get; set; }
     
-        public virtual Cidade Cidade { get; set; }
-        public virtual Filial Filial { get; set; }
-        public virtual Variaveis Variaveis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HEContratacao> HorasExtras { get; set; }
         public virtual CentroCusto CentroCusto { get; set; }
@@ -47,5 +44,7 @@ namespace OrcamentoApp.Models
         public virtual ConvenioMed ConvenioMed { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CalculoEventoContratacao> CalculosEventosContratacoes { get; set; }
+        public virtual Filial Filial { get; set; }
+        public virtual Variaveis Variaveis { get; set; }
     }
 }

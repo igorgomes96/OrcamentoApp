@@ -29,10 +29,10 @@ namespace OrcamentoApp.Models
         public string NomeCargo2 { get; set; }
         public string Tipo2 { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Variaveis> Variaveis { get; set; }
         public virtual ConvenioMed Plano1 { get; set; }
         public virtual ConvenioMed Plano2 { get; set; }
         public virtual ConvenioMed Plano3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Variaveis> Variaveis { get; set; }
     }
 }

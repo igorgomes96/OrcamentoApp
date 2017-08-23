@@ -18,10 +18,10 @@ namespace OrcamentoApp.Models
         public CentroCusto()
         {
             this.Contratacoes = new HashSet<Contratacao>();
-            this.Funcionarios = new HashSet<Funcionario>();
             this.Receitas = new HashSet<Receita>();
             this.Transferencias = new HashSet<Transferencia>();
             this.SolicitacaoContratacao = new HashSet<SolicitacaoContratacao>();
+            this.Funcionario = new HashSet<Funcionario>();
         }
     
         public string Codigo { get; set; }
@@ -40,12 +40,12 @@ namespace OrcamentoApp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contratacao> Contratacoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Funcionario> Funcionarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Receita> Receitas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transferencia> Transferencias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SolicitacaoContratacao> SolicitacaoContratacao { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Funcionario> Funcionario { get; set; }
     }
 }

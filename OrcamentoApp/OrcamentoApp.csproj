@@ -334,6 +334,9 @@
     <Compile Include="Models\ConvenioMed.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConvenioOdontologico.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DiasIndenizados.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -446,6 +449,9 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ValoresAbertosBase.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Variaveis.cs">
