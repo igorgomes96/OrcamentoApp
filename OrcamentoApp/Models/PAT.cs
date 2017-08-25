@@ -17,7 +17,7 @@ namespace OrcamentoApp.Models
         public int CargaHoraria { get; set; }
         public double Valor { get; set; }
         public int SindicatoCod { get; set; }
-        public Nullable<float> PercentualDesconto { get; set; }
+        public float Percentual { get; set; }
     
         public virtual CargaHoraria CargaHorariaObj { get; set; }
         public virtual Sindicato Sindicato { get; set; }

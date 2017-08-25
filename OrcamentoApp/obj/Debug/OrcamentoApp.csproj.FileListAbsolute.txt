@@ -214,3 +214,4 @@ C:\Users\igorago\Documents\GitHub\OrcamentoApp\OrcamentoApp\bin\pt-br\System.Web
 C:\Users\igorago\Documents\GitHub\OrcamentoApp\OrcamentoApp\obj\Debug\OrcamentoApp.csprojResolveAssemblyReference.cache
 C:\Users\igorago\Documents\GitHub\OrcamentoApp\OrcamentoApp\obj\Debug\OrcamentoApp.dll
 C:\Users\igorago\Documents\GitHub\OrcamentoApp\OrcamentoApp\obj\Debug\OrcamentoApp.pdb
+C:\Users\igorg\OneDrive\Orçamento\Sistema\DotNet\OrcamentoApp\OrcamentoApp\obj\Debug\OrcamentoApp.csproj.CoreCompileInputs.cache

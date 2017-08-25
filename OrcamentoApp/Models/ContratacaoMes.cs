@@ -15,9 +15,7 @@ namespace OrcamentoApp.Models
     public partial class ContratacaoMes
     {
         public int ContratacaoCod { get; set; }
-        public double Outros { get; set; }
         public int Qtda { get; set; }
-        public double RemuneracaoProdutividade { get; set; }
         public int MesOrcamentoCod { get; set; }
     
         public virtual Contratacao Contratacao { get; set; }

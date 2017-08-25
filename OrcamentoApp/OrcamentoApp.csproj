@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -220,7 +221,6 @@
     <Compile Include="Controllers\HEsContratacoesController.cs" />
     <Compile Include="Controllers\ImportacoesController.cs" />
     <Compile Include="Controllers\MesesOrcamentoController.cs" />
-    <Compile Include="Controllers\OutrosBasesController.cs" />
     <Compile Include="Controllers\PATsController.cs" />
     <Compile Include="Controllers\PerfisAcessoController.cs" />
     <Compile Include="Controllers\ReajConvenioMedicosController.cs" />
@@ -260,7 +260,6 @@
     <Compile Include="DTO\HEContratacaoDTO.cs" />
     <Compile Include="DTO\MesOrcamentoDTO.cs" />
     <Compile Include="DTO\NivelDTO.cs" />
-    <Compile Include="DTO\OutrosBaseDTO.cs" />
     <Compile Include="DTO\PATDTO.cs" />
     <Compile Include="DTO\PerfilAcessoDTO.cs" />
     <Compile Include="DTO\ReajConvenioMedDTO.cs" />
@@ -296,6 +295,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ACT.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdNoturnoBase.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdNoturnoContratacao.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Afastamento.cs">
@@ -334,7 +339,7 @@
     <Compile Include="Models\ConvenioMed.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConvenioOdontologico.cs">
+    <Compile Include="Models\ConvenioOdo.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DiasIndenizados.cs">
@@ -344,6 +349,9 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Encargos.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EscalaTrabalho.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EventoFolha.cs">
@@ -385,7 +393,7 @@
     <Compile Include="Models\Nivel.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OutrosBase.cs">
+    <Compile Include="Models\OrdenadoReajustavel.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PAT.cs">
@@ -397,10 +405,22 @@
     <Compile Include="Models\Permissao.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\QtdaDias.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ReajConvenioMed.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReajConvenioOdo.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Reajuste.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReajVTFretado.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReajVTPasse.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Receita.cs">

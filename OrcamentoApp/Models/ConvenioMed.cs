@@ -29,7 +29,6 @@ namespace OrcamentoApp.Models
         public double Valor { get; set; }
         public double ValorDependentes { get; set; }
         public int Codigo { get; set; }
-        public string Plano2 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cargo> CargosPlano1 { get; set; }

@@ -15,10 +15,11 @@ namespace OrcamentoApp.Models
     public partial class HEContratacao
     {
         public int ContratacaoCod { get; set; }
-        public System.DateTime Mes { get; set; }
-        public double PercentualHoras { get; set; }
+        public int PercentualHoras { get; set; }
         public int QtdaHoras { get; set; }
+        public int CodMesOrcamento { get; set; }
     
         public virtual Contratacao Contratacao { get; set; }
+        public virtual MesOrcamento MesOrcamento { get; set; }
     }
 }

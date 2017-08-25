@@ -12,13 +12,13 @@ namespace OrcamentoApp.DTO
         {
             if (h == null) return;
             ContratacaoCod = h.ContratacaoCod;
-            Mes = h.Mes;
+            CodMesOrcamento = h.CodMesOrcamento;
             PercentualHoras = h.PercentualHoras;
             QtdaHoras = h.QtdaHoras;
         }
         public int ContratacaoCod { get; set; }
-        public System.DateTime Mes { get; set; }
+        public int CodMesOrcamento { get; set; }
         public double PercentualHoras { get; set; }
         public int QtdaHoras { get; set; }
-        }
+    }
 }

@@ -34,10 +34,7 @@ namespace OrcamentoApp.Models
         public virtual DbSet<DiasIndenizados> DiasIndenizados { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<Encargos> Encargos { get; set; }
-        public virtual DbSet<HEBase> HEBase { get; set; }
-        public virtual DbSet<HEContratacao> HEContratacao { get; set; }
         public virtual DbSet<Nivel> Nivel { get; set; }
-        public virtual DbSet<OutrosBase> OutrosBase { get; set; }
         public virtual DbSet<PAT> PAT { get; set; }
         public virtual DbSet<ReajConvenioMed> ReajConvenioMed { get; set; }
         public virtual DbSet<Receita> Receita { get; set; }
@@ -68,11 +65,21 @@ namespace OrcamentoApp.Models
         public virtual DbSet<CalculoEventoBase> CalculoEventoBase { get; set; }
         public virtual DbSet<CalculoEventoContratacao> CalculoEventoContratacao { get; set; }
         public virtual DbSet<EventoFolha> EventoFolha { get; set; }
-        public virtual DbSet<ConvenioOdontologico> ConvenioOdontologico { get; set; }
         public virtual DbSet<ValoresAbertosBase> ValoresAbertosBase { get; set; }
         public virtual DbSet<Filial> Filial { get; set; }
         public virtual DbSet<Variaveis> Variaveis { get; set; }
         public virtual DbSet<Reajuste> Reajuste { get; set; }
         public virtual DbSet<Funcionario> Funcionario { get; set; }
+        public virtual DbSet<AdNoturnoBase> AdNoturnoBase { get; set; }
+        public virtual DbSet<AdNoturnoContratacao> AdNoturnoContratacao { get; set; }
+        public virtual DbSet<ConvenioOdo> ConvenioOdo { get; set; }
+        public virtual DbSet<EscalaTrabalho> EscalaTrabalho { get; set; }
+        public virtual DbSet<OrdenadoReajustavel> OrdenadoReajustavel { get; set; }
+        public virtual DbSet<QtdaDias> QtdaDias { get; set; }
+        public virtual DbSet<ReajConvenioOdo> ReajConvenioOdo { get; set; }
+        public virtual DbSet<ReajVTFretado> ReajVTFretado { get; set; }
+        public virtual DbSet<ReajVTPasse> ReajVTPasse { get; set; }
+        public virtual DbSet<HEBase> HEBase { get; set; }
+        public virtual DbSet<HEContratacao> HEContratacao { get; set; }
     }
 }

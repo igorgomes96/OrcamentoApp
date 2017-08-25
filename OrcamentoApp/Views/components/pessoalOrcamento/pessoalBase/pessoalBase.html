@@ -4,15 +4,89 @@
 
         <div class="pills-in-panel">
             <ul class="nav nav-pills">
-                <li class="nav-item" ng-class="{'active': ct.aba == 'Associados'}">
-                    <a class="nav-link" href ng-click="ct.aba = 'Associados'">Associados</a>
+                <li ng-class="{'active': ct.aba == 'Associados'}">
+                    <a href ng-click="ct.aba = 'Associados'">Dados</a>
                 </li>
-                <li class="nav-item" ng-class="{'active': ct.aba == 'Férias'}">
-                    <a class="nav-link" href ng-click="ct.aba = 'Férias'">Férias</a>
+                <li ng-class="{'active': ct.aba == 'Férias'}">
+                    <a href ng-click="ct.aba = 'Férias'">Férias</a>
                 </li>
-                <li class="nav-item" ng-class="{'active': ct.aba == 'Horas Extras'}">
-                    <a class="nav-link" href ng-click="ct.aba = 'Horas Extras'">Horas Extras</a>
+
+                <li role="presentation" class="dropdown" ng-class="{'active': ct.aba == 'Horas Extras'}">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href role="button" aria-haspopup="true" aria-expanded="false">
+                        Horas Extras <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href ng-click="ct.aba = 'Horas Extras';ct.PercHE='170';">170%</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.aba = 'Horas Extras';ct.PercHE='100';">100%</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.aba = 'Horas Extras';ct.PercHE='75';">75%</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.aba = 'Horas Extras';ct.PercHE='60';">60%</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.aba = 'Horas Extras';ct.PercHE='50';">50%</a>
+                        </li>
+                    </ul>
                 </li>
+
+                <li role="presentation" class="dropdown" ng-class="{'active': ct.aba == 'Adicional Noturno'}">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href role="button" aria-haspopup="true" aria-expanded="false">
+                        Adicional Noturno <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href ng-click="ct.aba = 'Adicional Noturno';ct.PercHN='20';">20%</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.aba = 'Adicional Noturno';ct.PercHN='30';">30%</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.aba = 'Adicional Noturno';ct.PercHN='40';">40%</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.aba = 'Adicional Noturno';ct.PercHN='50';">50%</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.aba = 'Adicional Noturno';ct.PercHN='60';">60%</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li ng-class="{'active': ct.aba == 'Gratificações'}">
+                    <a href ng-click="ct.aba = 'Gratificações'">Gratificações</a>
+                </li>
+
+                <li ng-class="{'active': ct.aba == 'Produtividade'}">
+                    <a href ng-click="ct.aba = 'Produtividade'">Produtividade</a>
+                </li>
+
+                <li ng-class="{'active': ct.aba == 'Comissão'}">
+                    <a href ng-click="ct.aba = 'Comissão'">Comissão</a>
+                </li>
+
+                <li role="presentation" class="dropdown" ng-class="{'active': ct.aba == 'Outros'}">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href role="button" aria-haspopup="true" aria-expanded="false">
+                        Outros <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href ng-click="ct.aba = 'Outros';ct.OutrosCategoria='Pro-Labore';">Pro-Labore</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.aba = 'Outros';ct.OutrosCategoria='PGP / PGI<';">PGP / PGI</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.aba = 'Outros';ct.OutrosCategoria='Ajuda de Custo';">Ajuda de Custo</a>
+                        </li>
+                    </ul>
+                </li>
+
+
             </ul>
         </div>
 
@@ -37,8 +111,8 @@
                     <form name="formPessoal">
                         <tr ng-repeat="f in ct.funcionarios">
                             <td>{{f.Matricula}}</td>
-                            <td data-toggle="tooltip" data-placement="left" title="{{f.Nome}}"><p class="ellipsis">{{f.Nome}}</p></td>
-                            <td data-toggle="tooltip" data-placement="left" title="{{f.Cargo.NomeCargo}}"><p class="ellipsis">{{f.Cargo.NomeCargo}}</p></td>
+                            <td data-toggle="tooltip" data-placement="left" title="{{f.Nome}}"><p>{{f.Nome | ellipsis:12:5}}</p></td>
+                            <td data-toggle="tooltip" data-placement="left" title="{{f.Cargo.NomeCargo}}"><p class="ellipsis">{{f.Cargo.NomeCargo | ellipsis:12:5}}</p></td>
                             <td>R$ {{f.Salario | number:2}}</td>
                             <td>{{f.DataAdmissao | date:'dd/MM/yyyy'}}</td>
                             <td>

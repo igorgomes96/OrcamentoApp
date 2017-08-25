@@ -19,13 +19,13 @@ namespace OrcamentoApp.Models
         {
             this.Afastamento = new HashSet<Afastamento>();
             this.CalculoEventoBase = new HashSet<CalculoEventoBase>();
-            this.HEBase = new HashSet<HEBase>();
-            this.OutrosBase = new HashSet<OutrosBase>();
             this.SolicitacaoAlteracaoCargo = new HashSet<SolicitacaoAlteracaoCargo>();
             this.SolicitacaoAlteracaoSalario = new HashSet<SolicitacaoAlteracaoSalario>();
             this.SolicitacaoDesligamento = new HashSet<SolicitacaoDesligamento>();
             this.Transferencia = new HashSet<Transferencia>();
             this.ValoresAbertosBase = new HashSet<ValoresAbertosBase>();
+            this.AdNoturnoBase = new HashSet<AdNoturnoBase>();
+            this.HEBase = new HashSet<HEBase>();
         }
     
         public string Matricula { get; set; }
@@ -36,14 +36,12 @@ namespace OrcamentoApp.Models
         public double AuxSeguro { get; set; }
         public int AvosFerias { get; set; }
         public System.DateTime DataAdmissao { get; set; }
-        public double Gratificacoes { get; set; }
         public Nullable<System.DateTime> MesDesligamento { get; set; }
         public Nullable<System.DateTime> MesFerias { get; set; }
         public string Nome { get; set; }
         public bool Periculosidade { get; set; }
         public int QtdaDependentes { get; set; }
         public int QtdaDiasVendidosFerias { get; set; }
-        public Nullable<double> RemProdutividade { get; set; }
         public double Salario { get; set; }
         public string TipoAviso { get; set; }
         public double VT { get; set; }
@@ -55,10 +53,12 @@ namespace OrcamentoApp.Models
         public int CargoCod { get; set; }
         public int SindicatoCod { get; set; }
         public Nullable<int> ConvenioMedCod { get; set; }
-        public string Nome2 { get; set; }
         public float ValorConvMedico { get; set; }
         public float ValorConvOdontologico { get; set; }
         public bool AdCondutor { get; set; }
+        public bool VTFretadoFlag { get; set; }
+        public int CodEscalaTrabalho { get; set; }
+        public Nullable<int> CodConvenioOdo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Afastamento> Afastamento { get; set; }
@@ -70,10 +70,6 @@ namespace OrcamentoApp.Models
         public virtual Sindicato Sindicato { get; set; }
         public virtual Variaveis Variaveis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HEBase> HEBase { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OutrosBase> OutrosBase { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SolicitacaoAlteracaoCargo> SolicitacaoAlteracaoCargo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SolicitacaoAlteracaoSalario> SolicitacaoAlteracaoSalario { get; set; }
@@ -83,5 +79,11 @@ namespace OrcamentoApp.Models
         public virtual ICollection<Transferencia> Transferencia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ValoresAbertosBase> ValoresAbertosBase { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AdNoturnoBase> AdNoturnoBase { get; set; }
+        public virtual ConvenioOdo ConvenioOdo { get; set; }
+        public virtual EscalaTrabalho EscalaTrabalho { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HEBase> HEBase { get; set; }
     }
 }

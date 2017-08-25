@@ -37,18 +37,18 @@ angular.module("orcamentoApp").controller('navigationCtrl', ['$scope', '$state',
 				visible: true
 			},
 			{
-				state: 'menuContainer.simulacoes',
-				icone: 'fa fa-money fa-fw',
-				texto: 'Orçamento - Simulações',
-				subMenu: [],
-				visible: user.Perfil == 'Administrador' || user.Perfil == 'BP'
-			},
-			{
 				state: 'menuContainer.pessoalOrcamento({codCiclo:1})',
 				icone: 'fa fa-money fa-fw',
 				texto: 'Orçamento',
 				subMenu: [],
 				visible: user.Perfil == 'Administrador' || user.Perfil == 'Gestor de CR'
+			},
+			{
+				state: 'menuContainer.simulacoes',
+				icone: 'fa fa-object-group fa-fw',
+				texto: 'Simulações',
+				subMenu: [],
+				visible: user.Perfil == 'Administrador' || user.Perfil == 'BP'
 			},
 			{
 				state: '#',

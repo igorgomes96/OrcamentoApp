@@ -17,9 +17,10 @@ namespace OrcamentoApp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Contratacao()
         {
-            this.HorasExtras = new HashSet<HEContratacao>();
             this.ContratacaoMeses = new HashSet<ContratacaoMes>();
             this.CalculosEventosContratacoes = new HashSet<CalculoEventoContratacao>();
+            this.AdNoturnoContratacao = new HashSet<AdNoturnoContratacao>();
+            this.HEContratacao = new HashSet<HEContratacao>();
         }
     
         public int Codigo { get; set; }
@@ -34,9 +35,8 @@ namespace OrcamentoApp.Models
         public int CicloCod { get; set; }
         public Nullable<int> ConvenioPlanoCod { get; set; }
         public float Salario { get; set; }
+        public bool VTFretadoFlag { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HEContratacao> HorasExtras { get; set; }
         public virtual CentroCusto CentroCusto { get; set; }
         public virtual Ciclo Ciclo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -46,5 +46,9 @@ namespace OrcamentoApp.Models
         public virtual ICollection<CalculoEventoContratacao> CalculosEventosContratacoes { get; set; }
         public virtual Filial Filial { get; set; }
         public virtual Variaveis Variaveis { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AdNoturnoContratacao> AdNoturnoContratacao { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HEContratacao> HEContratacao { get; set; }
     }
 }

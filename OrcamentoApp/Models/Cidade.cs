@@ -18,13 +18,20 @@ namespace OrcamentoApp.Models
         public Cidade()
         {
             this.Filial = new HashSet<Filial>();
+            this.ReajVTFretado = new HashSet<ReajVTFretado>();
+            this.ReajVTPasse = new HashSet<ReajVTPasse>();
         }
     
         public string NomeCidade { get; set; }
-        public double VT { get; set; }
-        public bool EhFilial { get; set; }
+        public double VTPasse { get; set; }
+        public bool EhCapital { get; set; }
+        public Nullable<double> VTFretadoValor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Filial> Filial { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReajVTFretado> ReajVTFretado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReajVTPasse> ReajVTPasse { get; set; }
     }
 }

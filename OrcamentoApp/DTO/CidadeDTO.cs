@@ -11,13 +11,13 @@ namespace OrcamentoApp.DTO
         {
             if (c == null) return;
             NomeCidade = c.NomeCidade;
-            VT = c.VT;
-            EhFilial = c.EhFilial;
+            VTPasse = c.VTPasse;
+            EhCapital = c.EhCapital;
         }
     
         public string NomeCidade { get; set; }
-        public double VT { get; set; }
-        public bool EhFilial { get; set; }
+        public double VTPasse { get; set; }
+        public bool EhCapital { get; set; }
     
     }
 }

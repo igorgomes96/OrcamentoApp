@@ -15,6 +15,7 @@
     <EntitySetMapping Name="CargaHoraria">
       <EntityTypeMapping TypeName="OrcamentoModel.CargaHoraria">
         <MappingFragment StoreEntitySet="CargaHoraria">
+          <ScalarProperty Name="QtdaPassesDiario" ColumnName="QtdaPassesDiario" />
           <ScalarProperty Name="CargaHorariaCod" ColumnName="CargaHoraria" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -36,9 +37,10 @@
     <EntitySetMapping Name="Cidade">
       <EntityTypeMapping TypeName="OrcamentoModel.Cidade">
         <MappingFragment StoreEntitySet="Cidade">
-          <ScalarProperty Name="EhFilial" ColumnName="EhFilial" />
+          <ScalarProperty Name="VTFretadoValor" ColumnName="VTFretadoValor" />
+          <ScalarProperty Name="EhCapital" ColumnName="EhCapital" />
+          <ScalarProperty Name="VTPasse" ColumnName="VTPasse" />
           <ScalarProperty Name="NomeCidade" ColumnName="NomeCidade" />
-          <ScalarProperty Name="VT" ColumnName="VT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -54,6 +56,7 @@
     <EntitySetMapping Name="Contratacao">
       <EntityTypeMapping TypeName="OrcamentoModel.Contratacao">
         <MappingFragment StoreEntitySet="Contratacao">
+          <ScalarProperty Name="VTFretadoFlag" ColumnName="VTFretadoFlag" />
           <ScalarProperty Name="Salario" ColumnName="Salario" />
           <ScalarProperty Name="ConvenioPlanoCod" ColumnName="ConvenioPlanoCod" />
           <ScalarProperty Name="CicloCod" ColumnName="CicloCod" />
@@ -102,26 +105,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="HEBase">
-      <EntityTypeMapping TypeName="OrcamentoModel.HEBase">
-        <MappingFragment StoreEntitySet="HEBase">
-          <ScalarProperty Name="CodMesOrcamento" ColumnName="CodMesOrcamento" />
-          <ScalarProperty Name="FuncionarioMatricula" ColumnName="FuncionarioMatricula" />
-          <ScalarProperty Name="PercentualHoras" ColumnName="PercentualHoras" />
-          <ScalarProperty Name="QtdaHoras" ColumnName="QtdaHoras" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HEContratacao">
-      <EntityTypeMapping TypeName="OrcamentoModel.HEContratacao">
-        <MappingFragment StoreEntitySet="HEContratacao">
-          <ScalarProperty Name="ContratacaoCod" ColumnName="ContratacaoCod" />
-          <ScalarProperty Name="Mes" ColumnName="Mes" />
-          <ScalarProperty Name="PercentualHoras" ColumnName="PercentualHoras" />
-          <ScalarProperty Name="QtdaHoras" ColumnName="QtdaHoras" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Nivel">
       <EntityTypeMapping TypeName="OrcamentoModel.Nivel">
         <MappingFragment StoreEntitySet="Nivel">
@@ -130,20 +113,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OutrosBase">
-      <EntityTypeMapping TypeName="OrcamentoModel.OutrosBase">
-        <MappingFragment StoreEntitySet="OutrosBase">
-          <ScalarProperty Name="FuncionarioMatricula" ColumnName="FuncionarioMatricula" />
-          <ScalarProperty Name="Mes" ColumnName="Mes" />
-          <ScalarProperty Name="Outros" ColumnName="Outros" />
-          <ScalarProperty Name="RemProdutividade" ColumnName="RemProdutividade" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PAT">
       <EntityTypeMapping TypeName="OrcamentoModel.PAT">
         <MappingFragment StoreEntitySet="PAT">
-          <ScalarProperty Name="PercentualDesconto" ColumnName="PercentualDesconto" />
+          <ScalarProperty Name="Percentual" ColumnName="Percentual" />
           <ScalarProperty Name="CargaHoraria" ColumnName="CargaHoraria" />
           <ScalarProperty Name="Valor" ColumnName="Valor" />
           <ScalarProperty Name="SindicatoCod" ColumnName="SindicatoCod" />
@@ -303,9 +276,7 @@
       <EntityTypeMapping TypeName="OrcamentoModel.ContratacaoMes">
         <MappingFragment StoreEntitySet="ContratacaoMes">
           <ScalarProperty Name="MesOrcamentoCod" ColumnName="MesOrcamentoCod" />
-          <ScalarProperty Name="RemuneracaoProdutividade" ColumnName="RemuneracaoProdutividade" />
           <ScalarProperty Name="Qtda" ColumnName="Qtda" />
-          <ScalarProperty Name="Outros" ColumnName="Outros" />
           <ScalarProperty Name="ContratacaoCod" ColumnName="ContratacaoCod" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -313,7 +284,6 @@
     <EntitySetMapping Name="ConvenioMed">
       <EntityTypeMapping TypeName="OrcamentoModel.ConvenioMed">
         <MappingFragment StoreEntitySet="ConvenioMed">
-          <ScalarProperty Name="Plano2" ColumnName="Plano2" />
           <ScalarProperty Name="Codigo" ColumnName="Codigo" />
           <ScalarProperty Name="ValorDependentes" ColumnName="ValorDependentes" />
           <ScalarProperty Name="Valor" ColumnName="Valor" />
@@ -467,16 +437,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ConvenioOdontologico">
-      <EntityTypeMapping TypeName="OrcamentoModel.ConvenioOdontologico">
-        <MappingFragment StoreEntitySet="ConvenioOdontologico">
-          <ScalarProperty Name="ValorDependentes" ColumnName="ValorDependentes" />
-          <ScalarProperty Name="Valor" ColumnName="Valor" />
-          <ScalarProperty Name="Plano" ColumnName="Plano" />
-          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ValoresAbertosBase">
       <EntityTypeMapping TypeName="OrcamentoModel.ValoresAbertosBase">
         <MappingFragment StoreEntitySet="ValoresAbertosBase">
@@ -527,10 +487,12 @@
     <EntitySetMapping Name="Funcionario">
       <EntityTypeMapping TypeName="OrcamentoModel.Funcionario">
         <MappingFragment StoreEntitySet="Funcionario">
+          <ScalarProperty Name="CodConvenioOdo" ColumnName="CodConvenioOdo" />
+          <ScalarProperty Name="CodEscalaTrabalho" ColumnName="CodEscalaTrabalho" />
+          <ScalarProperty Name="VTFretadoFlag" ColumnName="VTFretadoFlag" />
           <ScalarProperty Name="AdCondutor" ColumnName="AdCondutor" />
           <ScalarProperty Name="ValorConvOdontologico" ColumnName="ValorConvOdontologico" />
           <ScalarProperty Name="ValorConvMedico" ColumnName="ValorConvMedico" />
-          <ScalarProperty Name="Nome2" ColumnName="Nome2" />
           <ScalarProperty Name="ConvenioMedCod" ColumnName="ConvenioMedCod" />
           <ScalarProperty Name="SindicatoCod" ColumnName="SindicatoCod" />
           <ScalarProperty Name="CargoCod" ColumnName="CargoCod" />
@@ -542,14 +504,12 @@
           <ScalarProperty Name="VT" ColumnName="VT" />
           <ScalarProperty Name="TipoAviso" ColumnName="TipoAviso" />
           <ScalarProperty Name="Salario" ColumnName="Salario" />
-          <ScalarProperty Name="RemProdutividade" ColumnName="RemProdutividade" />
           <ScalarProperty Name="QtdaDiasVendidosFerias" ColumnName="QtdaDiasVendidosFerias" />
           <ScalarProperty Name="QtdaDependentes" ColumnName="QtdaDependentes" />
           <ScalarProperty Name="Periculosidade" ColumnName="Periculosidade" />
           <ScalarProperty Name="Nome" ColumnName="Nome" />
           <ScalarProperty Name="MesFerias" ColumnName="MesFerias" />
           <ScalarProperty Name="MesDesligamento" ColumnName="MesDesligamento" />
-          <ScalarProperty Name="Gratificacoes" ColumnName="Gratificacoes" />
           <ScalarProperty Name="DataAdmissao" ColumnName="DataAdmissao" />
           <ScalarProperty Name="AvosFerias" ColumnName="AvosFerias" />
           <ScalarProperty Name="AuxSeguro" ColumnName="AuxSeguro" />
@@ -558,6 +518,111 @@
           <ScalarProperty Name="AuxEducacao" ColumnName="AuxEducacao" />
           <ScalarProperty Name="AuxCreche" ColumnName="AuxCreche" />
           <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdNoturnoBase">
+      <EntityTypeMapping TypeName="OrcamentoModel.AdNoturnoBase">
+        <MappingFragment StoreEntitySet="AdNoturnoBase">
+          <ScalarProperty Name="QtdaHoras" ColumnName="QtdaHoras" />
+          <ScalarProperty Name="PercentualHoras" ColumnName="PercentualHoras" />
+          <ScalarProperty Name="CodMesOrcamento" ColumnName="CodMesOrcamento" />
+          <ScalarProperty Name="FuncionarioMatricula" ColumnName="FuncionarioMatricula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdNoturnoContratacao">
+      <EntityTypeMapping TypeName="OrcamentoModel.AdNoturnoContratacao">
+        <MappingFragment StoreEntitySet="AdNoturnoContratacao">
+          <ScalarProperty Name="QtdaHoras" ColumnName="QtdaHoras" />
+          <ScalarProperty Name="PercentualHoras" ColumnName="PercentualHoras" />
+          <ScalarProperty Name="CodMesOrcamento" ColumnName="CodMesOrcamento" />
+          <ScalarProperty Name="CodContratacao" ColumnName="CodContratacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConvenioOdo">
+      <EntityTypeMapping TypeName="OrcamentoModel.ConvenioOdo">
+        <MappingFragment StoreEntitySet="ConvenioOdo">
+          <ScalarProperty Name="ValorDependentes" ColumnName="ValorDependentes" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Plano" ColumnName="Plano" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EscalaTrabalho">
+      <EntityTypeMapping TypeName="OrcamentoModel.EscalaTrabalho">
+        <MappingFragment StoreEntitySet="EscalaTrabalho">
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenadoReajustavel">
+      <EntityTypeMapping TypeName="OrcamentoModel.OrdenadoReajustavel">
+        <MappingFragment StoreEntitySet="OrdenadoReajustavel">
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QtdaDias">
+      <EntityTypeMapping TypeName="OrcamentoModel.QtdaDias">
+        <MappingFragment StoreEntitySet="QtdaDias">
+          <ScalarProperty Name="CodEscala" ColumnName="CodEscala" />
+          <ScalarProperty Name="Qtda" ColumnName="Qtda" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReajConvenioOdo">
+      <EntityTypeMapping TypeName="OrcamentoModel.ReajConvenioOdo">
+        <MappingFragment StoreEntitySet="ReajConvenioOdo">
+          <ScalarProperty Name="PercentualReajuste" ColumnName="PercentualReajuste" />
+          <ScalarProperty Name="MesReajuste" ColumnName="MesReajuste" />
+          <ScalarProperty Name="CodConvenioOdo" ColumnName="CodConvenioOdo" />
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReajVTFretado">
+      <EntityTypeMapping TypeName="OrcamentoModel.ReajVTFretado">
+        <MappingFragment StoreEntitySet="ReajVTFretado">
+          <ScalarProperty Name="CidadeNome" ColumnName="CidadeNome" />
+          <ScalarProperty Name="MesReajuste" ColumnName="MesReajuste" />
+          <ScalarProperty Name="PercentualReajuste" ColumnName="PercentualReajuste" />
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReajVTPasse">
+      <EntityTypeMapping TypeName="OrcamentoModel.ReajVTPasse">
+        <MappingFragment StoreEntitySet="ReajVTPasse">
+          <ScalarProperty Name="CidadeNome" ColumnName="CidadeNome" />
+          <ScalarProperty Name="MesReajuste" ColumnName="MesReajuste" />
+          <ScalarProperty Name="PercentualReajuste" ColumnName="PercentualReajuste" />
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HEBase">
+      <EntityTypeMapping TypeName="OrcamentoModel.HEBase">
+        <MappingFragment StoreEntitySet="HEBase">
+          <ScalarProperty Name="CodMesOrcamento" ColumnName="CodMesOrcamento" />
+          <ScalarProperty Name="QtdaHoras" ColumnName="QtdaHoras" />
+          <ScalarProperty Name="PercentualHoras" ColumnName="PercentualHoras" />
+          <ScalarProperty Name="FuncionarioMatricula" ColumnName="FuncionarioMatricula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HEContratacao">
+      <EntityTypeMapping TypeName="OrcamentoModel.HEContratacao">
+        <MappingFragment StoreEntitySet="HEContratacao">
+          <ScalarProperty Name="CodMesOrcamento" ColumnName="CodMesOrcamento" />
+          <ScalarProperty Name="QtdaHoras" ColumnName="QtdaHoras" />
+          <ScalarProperty Name="PercentualHoras" ColumnName="PercentualHoras" />
+          <ScalarProperty Name="ContratacaoCod" ColumnName="ContratacaoCod" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

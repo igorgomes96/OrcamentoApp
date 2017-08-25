@@ -18,14 +18,12 @@ namespace OrcamentoApp.DTO
             AuxSeguro = f.AuxSeguro;
             AvosFerias = f.AvosFerias;
             DataAdmissao = f.DataAdmissao;
-            Gratificacoes = f.Gratificacoes;
             MesDesligamento = f.MesDesligamento;
             MesFerias = f.MesFerias;
             Nome = f.Nome;
             Periculosidade = f.Periculosidade;
             QtdaDependentes = f.QtdaDependentes;
             QtdaDiasVendidosFerias = f.QtdaDiasVendidosFerias;
-            RemProdutividade = f.RemProdutividade;
             Salario = f.Salario;
             TipoAviso = f.TipoAviso;
             VT = f.VT;
@@ -47,14 +45,12 @@ namespace OrcamentoApp.DTO
         public double AuxSeguro { get; set; }
         public int AvosFerias { get; set; }
         public System.DateTime DataAdmissao { get; set; }
-        public double Gratificacoes { get; set; }
         public Nullable<System.DateTime> MesDesligamento { get; set; }
         public Nullable<System.DateTime> MesFerias { get; set; }
         public string Nome { get; set; }
         public bool Periculosidade { get; set; }
         public Nullable<int> QtdaDependentes { get; set; }
         public Nullable<int> QtdaDiasVendidosFerias { get; set; }
-        public Nullable<double> RemProdutividade { get; set; }
         public double Salario { get; set; }
         public string TipoAviso { get; set; }
         public double VT { get; set; }
