@@ -217,6 +217,7 @@
     <Compile Include="Controllers\EncargosController.cs" />
     <Compile Include="Controllers\FiliaisController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
+    <Compile Include="Controllers\AdNoturnosBaseController.cs" />
     <Compile Include="Controllers\HEsBaseController.cs" />
     <Compile Include="Controllers\HEsContratacoesController.cs" />
     <Compile Include="Controllers\ImportacoesController.cs" />
@@ -239,8 +240,11 @@
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Controllers\TransferenciasController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Controllers\ValoresAbertosBaseController.cs" />
+    <Compile Include="Controllers\ValoresAbertosCRsController.cs" />
     <Compile Include="Controllers\VariaveisController.cs" />
     <Compile Include="DTO\ACTDTO.cs" />
+    <Compile Include="DTO\AdNoturnoBaseDTO.cs" />
     <Compile Include="DTO\AfastamentoDTO.cs" />
     <Compile Include="DTO\CargaHorariaDTO.cs" />
     <Compile Include="DTO\CargoDTO.cs" />
@@ -256,8 +260,11 @@
     <Compile Include="DTO\EncargosDTO.cs" />
     <Compile Include="DTO\FilialDTO.cs" />
     <Compile Include="DTO\FuncionarioDTO.cs" />
+    <Compile Include="DTO\FuncionarioHNsDTO.cs" />
+    <Compile Include="DTO\FuncionarioHEsDTO.cs" />
     <Compile Include="DTO\HEBaseDTO.cs" />
     <Compile Include="DTO\HEContratacaoDTO.cs" />
+    <Compile Include="DTO\QtdaHorasMesDTO.cs" />
     <Compile Include="DTO\MesOrcamentoDTO.cs" />
     <Compile Include="DTO\NivelDTO.cs" />
     <Compile Include="DTO\PATDTO.cs" />
@@ -278,6 +285,8 @@
     <Compile Include="DTO\TransferenciaDTO.cs" />
     <Compile Include="DTO\UserInfoDTO.cs" />
     <Compile Include="DTO\UsuarioDTO.cs" />
+    <Compile Include="DTO\ValoresAbertosBaseDTO.cs" />
+    <Compile Include="DTO\ValoresAbertosCRDTO.cs" />
     <Compile Include="DTO\VariaveisDTO.cs" />
     <Compile Include="Exceptions\AuthenticationFailureResult.cs" />
     <Compile Include="Excel\ImportacaoOleDB.cs" />
@@ -472,6 +481,9 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ValoresAbertosBase.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ValoresAbertosCR.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Variaveis.cs">

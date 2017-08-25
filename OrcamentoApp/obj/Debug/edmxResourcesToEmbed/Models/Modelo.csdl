@@ -624,6 +624,19 @@
       <End Role="MesOrcamento" EntitySet="MesOrcamento" />
       <End Role="HEContratacao" EntitySet="HEContratacao" />
     </AssociationSet>
+    <EntitySet Name="ValoresAbertosCR" EntityType="OrcamentoModel.ValoresAbertosCR" />
+    <AssociationSet Name="valoresabertoscr_centrocusto_fk" Association="OrcamentoModel.valoresabertoscr_centrocusto_fk">
+      <End Role="CentroCusto" EntitySet="CentroCusto" />
+      <End Role="ValoresAbertosCR" EntitySet="ValoresAbertosCR" />
+    </AssociationSet>
+    <AssociationSet Name="valoresabertoscr_eventofolha_fk" Association="OrcamentoModel.valoresabertoscr_eventofolha_fk">
+      <End Role="EventoFolha" EntitySet="EventoFolha" />
+      <End Role="ValoresAbertosCR" EntitySet="ValoresAbertosCR" />
+    </AssociationSet>
+    <AssociationSet Name="valoresabertoscr_mesorcamento_fk" Association="OrcamentoModel.valoresabertoscr_mesorcamento_fk">
+      <End Role="MesOrcamento" EntitySet="MesOrcamento" />
+      <End Role="ValoresAbertosCR" EntitySet="ValoresAbertosCR" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Sessao">
     <Key>
@@ -703,6 +716,7 @@
     <Property Name="Descricao2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="SolicitacaoContratacao" Relationship="OrcamentoModel.solicitacaocontratacao_centrocusto_fk" FromRole="CentroCusto" ToRole="SolicitacaoContratacao" />
     <NavigationProperty Name="Funcionario" Relationship="OrcamentoModel.funcionario_centrocusto_fk" FromRole="CentroCusto" ToRole="Funcionario" />
+    <NavigationProperty Name="ValoresAbertosCR" Relationship="OrcamentoModel.valoresabertoscr_centrocusto_fk" FromRole="CentroCusto" ToRole="ValoresAbertosCR" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
@@ -841,6 +855,7 @@
     <NavigationProperty Name="AdNoturnoContratacao" Relationship="OrcamentoModel.adnoturnocontratacao_mesorcamento_fk" FromRole="MesOrcamento" ToRole="AdNoturnoContratacao" />
     <NavigationProperty Name="HEBase" Relationship="OrcamentoModel.hebase_mesorcamento_fk" FromRole="MesOrcamento" ToRole="HEBase" />
     <NavigationProperty Name="HEContratacao" Relationship="OrcamentoModel.hecontratacao_mesorcamento_fk" FromRole="MesOrcamento" ToRole="HEContratacao" />
+    <NavigationProperty Name="ValoresAbertosCR" Relationship="OrcamentoModel.valoresabertoscr_mesorcamento_fk" FromRole="MesOrcamento" ToRole="ValoresAbertosCR" />
   </EntityType>
   <EntityType Name="StatusCiclo">
     <Key>
@@ -1322,6 +1337,7 @@
     <Property Name="CodConta" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ContaContabil" Relationship="OrcamentoModel.eventofolha_contacontabil_fk" FromRole="EventoFolha" ToRole="ContaContabil" />
     <NavigationProperty Name="ValoresAbertosBase" Relationship="OrcamentoModel.valoresabertosbase_eventofolha_fk" FromRole="EventoFolha" ToRole="ValoresAbertosBase" />
+    <NavigationProperty Name="ValoresAbertosCR" Relationship="OrcamentoModel.valoresabertoscr_eventofolha_fk" FromRole="EventoFolha" ToRole="ValoresAbertosCR" />
   </EntityType>
   <Association Name="calculoeventobase_eventofolha_fk">
     <End Type="OrcamentoModel.EventoFolha" Role="EventoFolha" Multiplicity="1" />
@@ -2183,6 +2199,56 @@
         <PropertyRef Name="Codigo" />
       </Principal>
       <Dependent Role="HEContratacao">
+        <PropertyRef Name="CodMesOrcamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ValoresAbertosCR">
+    <Key>
+      <PropertyRef Name="CodEvento" />
+      <PropertyRef Name="CodMesOrcamento" />
+      <PropertyRef Name="CodigoCR" />
+    </Key>
+    <Property Name="CodEvento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CodMesOrcamento" Type="Int32" Nullable="false" />
+    <Property Name="CodigoCR" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="Single" Nullable="false" />
+    <NavigationProperty Name="CentroCusto" Relationship="OrcamentoModel.valoresabertoscr_centrocusto_fk" FromRole="ValoresAbertosCR" ToRole="CentroCusto" />
+    <NavigationProperty Name="EventoFolha" Relationship="OrcamentoModel.valoresabertoscr_eventofolha_fk" FromRole="ValoresAbertosCR" ToRole="EventoFolha" />
+    <NavigationProperty Name="MesOrcamento" Relationship="OrcamentoModel.valoresabertoscr_mesorcamento_fk" FromRole="ValoresAbertosCR" ToRole="MesOrcamento" />
+  </EntityType>
+  <Association Name="valoresabertoscr_centrocusto_fk">
+    <End Type="OrcamentoModel.CentroCusto" Role="CentroCusto" Multiplicity="1" />
+    <End Type="OrcamentoModel.ValoresAbertosCR" Role="ValoresAbertosCR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CentroCusto">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ValoresAbertosCR">
+        <PropertyRef Name="CodigoCR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="valoresabertoscr_eventofolha_fk">
+    <End Type="OrcamentoModel.EventoFolha" Role="EventoFolha" Multiplicity="1" />
+    <End Type="OrcamentoModel.ValoresAbertosCR" Role="ValoresAbertosCR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventoFolha">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ValoresAbertosCR">
+        <PropertyRef Name="CodEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="valoresabertoscr_mesorcamento_fk">
+    <End Type="OrcamentoModel.MesOrcamento" Role="MesOrcamento" Multiplicity="1" />
+    <End Type="OrcamentoModel.ValoresAbertosCR" Role="ValoresAbertosCR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MesOrcamento">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ValoresAbertosCR">
         <PropertyRef Name="CodMesOrcamento" />
       </Dependent>
     </ReferentialConstraint>

@@ -26,6 +26,7 @@ namespace OrcamentoApp.Models
             this.AdNoturnoContratacao = new HashSet<AdNoturnoContratacao>();
             this.HEBase = new HashSet<HEBase>();
             this.HEContratacao = new HashSet<HEContratacao>();
+            this.ValoresAbertosCR = new HashSet<ValoresAbertosCR>();
         }
     
         public int Codigo { get; set; }
@@ -51,5 +52,7 @@ namespace OrcamentoApp.Models
         public virtual ICollection<HEBase> HEBase { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HEContratacao> HEContratacao { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ValoresAbertosCR> ValoresAbertosCR { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fd8765e47f6549b3a3ecdb2351110e1a" Name="Diagram1" ZoomLevel="58">
+      <Diagram DiagramId="fd8765e47f6549b3a3ecdb2351110e1a" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="OrcamentoModel.Afastamento" Width="1.5" PointX="13.5" PointY="26" IsExpanded="true" />
         <EntityTypeShape EntityType="OrcamentoModel.CargaHoraria" Width="1.5" PointX="3.75" PointY="21.125" IsExpanded="true" />
         <EntityTypeShape EntityType="OrcamentoModel.Cargo" Width="1.5" PointX="3.75" PointY="23.75" IsExpanded="true" />
@@ -87,7 +87,7 @@
         <AssociationConnector Association="OrcamentoModel.calculoeventocontratacao_evento_fk" />
         <AssociationConnector Association="OrcamentoModel.calculoeventocontratacao_mesorcamento_fk" />
         <AssociationConnector Association="OrcamentoModel.eventofolha_contacontabil_fk" />
-        <EntityTypeShape EntityType="OrcamentoModel.ValoresAbertosBase" Width="1.5" PointX="16.5" PointY="24.125" />
+        <EntityTypeShape EntityType="OrcamentoModel.ValoresAbertosBase" Width="1.875" PointX="16.125" PointY="24.125" />
         <AssociationConnector Association="OrcamentoModel.valoresabertosbase_eventofolha_fk" />
         <AssociationConnector Association="OrcamentoModel.valoresabertosbase_mesorcamento_fk" />
         <EntityTypeShape EntityType="OrcamentoModel.Filial" Width="1.5" PointX="6" PointY="31.5" />
@@ -121,7 +121,7 @@
         <AssociationConnector Association="OrcamentoModel.solicitacaodesligamento_funcionario_fk" />
         <AssociationConnector Association="OrcamentoModel.transferencia_funcionario_fk" />
         <AssociationConnector Association="OrcamentoModel.valoresabertosbase_funcionario_fk" />
-        <EntityTypeShape EntityType="OrcamentoModel.AdNoturnoBase" Width="1.5" PointX="16.125" PointY="17.25" />
+        <EntityTypeShape EntityType="OrcamentoModel.AdNoturnoBase" Width="1.5" PointX="16.125" PointY="17.125" />
         <EntityTypeShape EntityType="OrcamentoModel.AdNoturnoContratacao" Width="1.5" PointX="19.125" PointY="16.375" />
         <EntityTypeShape EntityType="OrcamentoModel.ConvenioOdo" Width="1.5" PointX="9.375" PointY="40.375" />
         <EntityTypeShape EntityType="OrcamentoModel.EscalaTrabalho" Width="1.5" PointX="0.75" PointY="2.5" />
@@ -146,6 +146,10 @@
         <AssociationConnector Association="OrcamentoModel.hebase_funcionario_fk" />
         <AssociationConnector Association="OrcamentoModel.hebase_mesorcamento_fk" />
         <AssociationConnector Association="OrcamentoModel.hecontratacao_mesorcamento_fk" />
+        <EntityTypeShape EntityType="OrcamentoModel.ValoresAbertosCR" Width="2.25" PointX="16.75" PointY="31.75" />
+        <AssociationConnector Association="OrcamentoModel.valoresabertoscr_centrocusto_fk" />
+        <AssociationConnector Association="OrcamentoModel.valoresabertoscr_eventofolha_fk" />
+        <AssociationConnector Association="OrcamentoModel.valoresabertoscr_mesorcamento_fk" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

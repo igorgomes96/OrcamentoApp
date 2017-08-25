@@ -81,5 +81,6 @@ namespace OrcamentoApp.Models
         public virtual DbSet<ReajVTPasse> ReajVTPasse { get; set; }
         public virtual DbSet<HEBase> HEBase { get; set; }
         public virtual DbSet<HEContratacao> HEContratacao { get; set; }
+        public virtual DbSet<ValoresAbertosCR> ValoresAbertosCR { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace OrcamentoApp.Models
             this.CalculosEventosBase = new HashSet<CalculoEventoBase>();
             this.CalculosEventosContratacoes = new HashSet<CalculoEventoContratacao>();
             this.ValoresAbertosBase = new HashSet<ValoresAbertosBase>();
+            this.ValoresAbertosCR = new HashSet<ValoresAbertosCR>();
         }
     
         public string Codigo { get; set; }
@@ -34,5 +35,7 @@ namespace OrcamentoApp.Models
         public virtual ContaContabil ContaContabil { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ValoresAbertosBase> ValoresAbertosBase { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ValoresAbertosCR> ValoresAbertosCR { get; set; }
     }
 }

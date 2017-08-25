@@ -1,87 +1,92 @@
 <ui-panel titulo="Recursos da Base" nome="panel-base">
-
     <div ng-if="ct.funcionarios.length">
 
         <div class="pills-in-panel">
             <ul class="nav nav-pills">
-                <li ng-class="{'active': ct.aba == 'Associados'}">
-                    <a href ng-click="ct.aba = 'Associados'">Dados</a>
+                <li ng-class="{'active': aba == 'Associados'}">
+                    <a href ng-click="ct.mudaAba('Associados')">Dados</a>
                 </li>
-                <li ng-class="{'active': ct.aba == 'Férias'}">
-                    <a href ng-click="ct.aba = 'Férias'">Férias</a>
+                <li ng-class="{'active': aba == 'Férias'}">
+                    <a href ng-click="ct.mudaAba('Férias')">Férias</a>
                 </li>
 
-                <li role="presentation" class="dropdown" ng-class="{'active': ct.aba == 'Horas Extras'}">
+                <li role="presentation" class="dropdown" ng-class="{'active': aba == 'Horas Extras'}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href role="button" aria-haspopup="true" aria-expanded="false">
-                        Horas Extras <span class="caret"></span>
+                        Horas Extras <span ng-hide="ct.PercHE=='Aberto'">{{ct.PercHE}}<span ng-hide="!ct.PercHE">%</span></span> <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href ng-click="ct.aba = 'Horas Extras';ct.PercHE='170';">170%</a>
+                            <a href ng-click="ct.mudaAba('Horas Extras');ct.PercHE='170';">170%</a>
                         </li>
                         <li>
-                            <a href ng-click="ct.aba = 'Horas Extras';ct.PercHE='100';">100%</a>
+                            <a href ng-click="ct.mudaAba('Horas Extras');ct.PercHE='100';">100%</a>
                         </li>
                         <li>
-                            <a href ng-click="ct.aba = 'Horas Extras';ct.PercHE='75';">75%</a>
+                            <a href ng-click="ct.mudaAba('Horas Extras');ct.PercHE='75';">75%</a>
                         </li>
                         <li>
-                            <a href ng-click="ct.aba = 'Horas Extras';ct.PercHE='60';">60%</a>
+                            <a href ng-click="ct.mudaAba('Horas Extras');ct.PercHE='60';">60%</a>
                         </li>
                         <li>
-                            <a href ng-click="ct.aba = 'Horas Extras';ct.PercHE='50';">50%</a>
+                            <a href ng-click="ct.mudaAba('Horas Extras');ct.PercHE='50';">50%</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.mudaAba('Horas Extras');ct.PercHE='Aberto';">Geral (para o CR)</a>
                         </li>
                     </ul>
                 </li>
 
-                <li role="presentation" class="dropdown" ng-class="{'active': ct.aba == 'Adicional Noturno'}">
+                <li role="presentation" class="dropdown" ng-class="{'active': aba == 'Adicional Noturno'}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href role="button" aria-haspopup="true" aria-expanded="false">
-                        Adicional Noturno <span class="caret"></span>
+                        Horas Noturnas <span ng-hide="ct.PercHN=='Aberto'">{{ct.PercHN}}<span ng-hide="!ct.PercHN">%</span></span> <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href ng-click="ct.aba = 'Adicional Noturno';ct.PercHN='20';">20%</a>
+                            <a href ng-click="ct.mudaAba('Adicional Noturno');ct.PercHN='20';">20%</a>
                         </li>
                         <li>
-                            <a href ng-click="ct.aba = 'Adicional Noturno';ct.PercHN='30';">30%</a>
+                            <a href ng-click="ct.mudaAba('Adicional Noturno');ct.PercHN='30';">30%</a>
                         </li>
                         <li>
-                            <a href ng-click="ct.aba = 'Adicional Noturno';ct.PercHN='40';">40%</a>
+                            <a href ng-click="ct.mudaAba('Adicional Noturno');ct.PercHN='40';">40%</a>
                         </li>
                         <li>
-                            <a href ng-click="ct.aba = 'Adicional Noturno';ct.PercHN='50';">50%</a>
+                            <a href ng-click="ct.mudaAba('Adicional Noturno');ct.PercHN='50';">50%</a>
                         </li>
                         <li>
-                            <a href ng-click="ct.aba = 'Adicional Noturno';ct.PercHN='60';">60%</a>
+                            <a href ng-click="ct.mudaAba('Adicional Noturno');ct.PercHN='60';">60%</a>
+                        </li>
+                        <li>
+                            <a href ng-click="ct.mudaAba('Adicional Noturno');ct.PercHN='Aberto';">Geral (para o CR)</a>
                         </li>
                     </ul>
                 </li>
 
-                <li ng-class="{'active': ct.aba == 'Gratificações'}">
-                    <a href ng-click="ct.aba = 'Gratificações'">Gratificações</a>
+                <li ng-class="{'active': aba == 'Gratificações'}">
+                    <a href ng-click="ct.mudaAba('Gratificações')">Gratificações</a>
                 </li>
 
-                <li ng-class="{'active': ct.aba == 'Produtividade'}">
-                    <a href ng-click="ct.aba = 'Produtividade'">Produtividade</a>
+                <li ng-class="{'active': aba == 'Produtividade'}">
+                    <a href ng-click="ct.mudaAba('Produtividade')">Produtividade</a>
                 </li>
 
-                <li ng-class="{'active': ct.aba == 'Comissão'}">
-                    <a href ng-click="ct.aba = 'Comissão'">Comissão</a>
+                <li ng-class="{'active': aba == 'Comissão'}">
+                    <a href ng-click="ct.mudaAba('Comissão')">Comissão</a>
                 </li>
 
-                <li role="presentation" class="dropdown" ng-class="{'active': ct.aba == 'Outros'}">
+                <li role="presentation" class="dropdown" ng-class="{'active': aba == 'Outros'}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href role="button" aria-haspopup="true" aria-expanded="false">
-                        Outros <span class="caret"></span>
+                        Outros <span ng-hide="!ct.OutrosCategoria">({{ct.OutrosCategoria}})</span> <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href ng-click="ct.aba = 'Outros';ct.OutrosCategoria='Pro-Labore';">Pro-Labore</a>
+                            <a href ng-click="ct.mudaAba('Outros');ct.OutrosCategoria='Pro-Labore';">Pro-Labore</a>
                         </li>
                         <li>
-                            <a href ng-click="ct.aba = 'Outros';ct.OutrosCategoria='PGP / PGI<';">PGP / PGI</a>
+                            <a href ng-click="ct.mudaAba('Outros');ct.OutrosCategoria='PGP / PGI';">PGP / PGI</a>
                         </li>
                         <li>
-                            <a href ng-click="ct.aba = 'Outros';ct.OutrosCategoria='Ajuda de Custo';">Ajuda de Custo</a>
+                            <a href ng-click="ct.mudaAba('Outros');ct.OutrosCategoria='Ajuda de Custo';">Ajuda de Custo</a>
                         </li>
                     </ul>
                 </li>
@@ -91,69 +96,30 @@
         </div>
 
 
-        <div ng-show="ct.aba == 'Associados'">
-
-            <table class="table table-striped table-condensed">
-                <thead>
-                    <tr>
-                        <th width="7%">Matrícula</th>
-                        <th width="22%">Nome</th>
-                        <th width="18%">Cargo</th>
-                        <th width="11%">Salário</th>
-                        <th width="9%">Admissão</th>
-                        <th width="9%">Férias</th>
-                        <th width="9%">Desligamento</th>
-                        <th width="11%">Tipo de Aviso</th>
-                        <th width="3%"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <form name="formPessoal">
-                        <tr ng-repeat="f in ct.funcionarios">
-                            <td>{{f.Matricula}}</td>
-                            <td data-toggle="tooltip" data-placement="left" title="{{f.Nome}}"><p>{{f.Nome | ellipsis:12:5}}</p></td>
-                            <td data-toggle="tooltip" data-placement="left" title="{{f.Cargo.NomeCargo}}"><p class="ellipsis">{{f.Cargo.NomeCargo | ellipsis:12:5}}</p></td>
-                            <td>R$ {{f.Salario | number:2}}</td>
-                            <td>{{f.DataAdmissao | date:'dd/MM/yyyy'}}</td>
-                            <td>
-                                <select class="form-control input-sm" ng-model="f.MesFerias" ng-change="ct.verificarDesligamento(f)" ng-options="m.Mes as (m.Mes | date:'MMM/yy') for m in ct.ciclo.Meses">
-                                    <option value="">Selecione...</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-control input-sm" ng-model="f.MesDesligamento" ng-change="ct.verificarFerias(f)" ng-options="m.Mes as (m.Mes | date:'MMM/yy') for m in ct.ciclo.Meses">
-                                    <option value="">Selecione...</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-control input-sm" ng-model="f.TipoAviso" ng-options="tipo for tipo in ['Trabalhado', 'Indenizado']" ng-disabled="!f.MesDesligamento">
-                                    <option value="">Selecione...</option>
-                                </select>
-                            </td>
-                            <td>
-                                <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-tranferir-cr" ng-click="ct.transferir(f)">
-                                    <i class="fa fa-share-square-o"></i>
-                                </button>
-                            </td>
-                        </tr>
-
-                    </form>
-                </tbody>
-            </table>
-
-        </div>
-
-
-        <div class="row" ng-show="ct.aba == 'Férias'">
-            <div class="col-md-12">
-                Férias
+        <div class="row" ng-if="aba == 'Associados'">
+            <div class="col-md-12" ng-include="'Views/components/pessoalOrcamento/pessoalBase/dadosAssociados.html'">
             </div>
         </div>
 
 
-        <div class="row" ng-show="ct.aba == 'Horas Extras'">
-            <div class="col-md-12">
-                Horas Extras
+        <div class="row" ng-if="aba == 'Férias'">
+            <div class="col-md-12" ng-include="'Views/components/pessoalOrcamento/pessoalBase/ferias.html'">
+            </div>
+        </div>
+
+
+        <div class="row" ng-if="aba == 'Horas Extras'">
+            <div class="col-md-12" ng-include="'Views/components/pessoalOrcamento/pessoalBase/horasExtras.html'">
+            </div>
+        </div>
+
+        <div class="row" ng-if="aba == 'Adicional Noturno'">
+            <div class="col-md-12" ng-include="'Views/components/pessoalOrcamento/pessoalBase/adNoturno.html'">
+            </div>
+        </div>
+
+        <div class="row" ng-if="aba == 'Gratificações' || aba == 'Produtividade' || aba == 'Comissão' || aba == 'Outros'">
+            <div class="col-md-12" ng-include="'Views/components/pessoalOrcamento/pessoalBase/outros.html'">
             </div>
         </div>
 
@@ -161,7 +127,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <button class="btn btn-primary" ng-click="ct.save(ct.funcionarios)">Salvar</button>
+                <button class="btn btn-primary" ng-click="ct.saveFuncionarios(ct.funcionarios)">Salvar</button>
             </div>
         </div>
 

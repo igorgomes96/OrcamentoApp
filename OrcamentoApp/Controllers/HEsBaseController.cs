@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using OrcamentoApp.Models;
+using OrcamentoApp.DTO;
 
 namespace OrcamentoApp.Controllers
 {
@@ -17,34 +18,38 @@ namespace OrcamentoApp.Controllers
         private Contexto db = new Contexto();
 
         // GET: api/HEsBase
-        public IQueryable<HEBase> GetHEBase()
+        public IEnumerable<HEBaseDTO> GetHEBase(int? percHoras = null, string matricula = null, int? codCiclo = null)
         {
-            return db.HEBase;
+            return db.HEBase.ToList()
+                .Where(x => (percHoras == null || x.PercentualHoras == percHoras) && (matricula == null || x.FuncionarioMatricula == matricula) || (codCiclo == null || x.MesOrcamento.CicloCod == codCiclo))
+                .Select(x => new HEBaseDTO(x));
         }
 
-        // GET: api/HEsBase/5
-        [ResponseType(typeof(HEBase))]
-        public IHttpActionResult GetHEBase(string id)
+        [ResponseType(typeof(FuncionarioHEsDTO))]
+        [Route("api/HEsBase/FuncionarioHE/{matricula}/{codCiclo}")]
+        public IHttpActionResult GetFuncionarioHEs(string matricula, int codCiclo)
         {
-            HEBase hEBase = db.HEBase.Find(id);
-            if (hEBase == null)
-            {
-                return NotFound();
-            }
+            Funcionario f = db.Funcionario.Find(matricula);
 
-            return Ok(hEBase);
+            if (f == null) return NotFound();
+
+            Ciclo c = db.Ciclo.Find(codCiclo);
+
+            if (c == null) return NotFound();
+
+            return Ok(new FuncionarioHEsDTO(f, c));
         }
 
         // PUT: api/HEsBase/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutHEBase(string id, HEBase hEBase)
+        public IHttpActionResult PutHEBase(string matricula, int percentual, int mesOrcamento, HEBase hEBase)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != hEBase.FuncionarioMatricula)
+            if (matricula != hEBase.FuncionarioMatricula || percentual != hEBase.PercentualHoras || mesOrcamento != hEBase.CodMesOrcamento)
             {
                 return BadRequest();
             }
@@ -57,7 +62,7 @@ namespace OrcamentoApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!HEBaseExists(id))
+                if (!HEBaseExists(matricula, percentual, mesOrcamento))
                 {
                     return NotFound();
                 }
@@ -71,7 +76,7 @@ namespace OrcamentoApp.Controllers
         }
 
         // POST: api/HEsBase
-        [ResponseType(typeof(HEBase))]
+        [ResponseType(typeof(HEBaseDTO))]
         public IHttpActionResult PostHEBase(HEBase hEBase)
         {
             if (!ModelState.IsValid)
@@ -87,7 +92,7 @@ namespace OrcamentoApp.Controllers
             }
             catch (DbUpdateException)
             {
-                if (HEBaseExists(hEBase.FuncionarioMatricula))
+                if (HEBaseExists(hEBase.FuncionarioMatricula, hEBase.PercentualHoras, hEBase.CodMesOrcamento))
                 {
                     return Conflict();
                 }
@@ -97,23 +102,25 @@ namespace OrcamentoApp.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = hEBase.FuncionarioMatricula }, hEBase);
+            return CreatedAtRoute("DefaultApi", new { id = hEBase.FuncionarioMatricula }, new HEBaseDTO(hEBase));
         }
 
         // DELETE: api/HEsBase/5
-        [ResponseType(typeof(HEBase))]
-        public IHttpActionResult DeleteHEBase(string id)
+        [ResponseType(typeof(HEBaseDTO))]
+        public IHttpActionResult DeleteHEBase(string matricula, int percentual, int mesOrcamento)
         {
-            HEBase hEBase = db.HEBase.Find(id);
+            HEBase hEBase = db.HEBase.Find(matricula, percentual, mesOrcamento);
             if (hEBase == null)
             {
                 return NotFound();
             }
 
+            HEBaseDTO h = new HEBaseDTO(hEBase);
+
             db.HEBase.Remove(hEBase);
             db.SaveChanges();
 
-            return Ok(hEBase);
+            return Ok(h);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +132,9 @@ namespace OrcamentoApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool HEBaseExists(string id)
+        private bool HEBaseExists(string matricula, int percentual, int mesOrcamento)
         {
-            return db.HEBase.Count(e => e.FuncionarioMatricula == id) > 0;
+            return db.HEBase.Count(e => e.FuncionarioMatricula == matricula && e.PercentualHoras == percentual && e.CodMesOrcamento == mesOrcamento) > 0;
         }
     }
 }

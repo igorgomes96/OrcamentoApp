@@ -587,6 +587,17 @@
     <Property Name="MatriculaFuncionario" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Valor" Type="real" Nullable="false" />
   </EntityType>
+  <EntityType Name="ValoresAbertosCR">
+    <Key>
+      <PropertyRef Name="CodEvento" />
+      <PropertyRef Name="CodMesOrcamento" />
+      <PropertyRef Name="CodigoCR" />
+    </Key>
+    <Property Name="CodEvento" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CodMesOrcamento" Type="int" Nullable="false" />
+    <Property Name="CodigoCR" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Valor" Type="real" Nullable="false" />
+  </EntityType>
   <EntityType Name="Variaveis">
     <Key>
       <PropertyRef Name="CargaHoraria" />
@@ -1617,6 +1628,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="valoresabertoscr_centrocusto_fk">
+    <End Role="CentroCusto" Type="Self.CentroCusto" Multiplicity="1" />
+    <End Role="ValoresAbertosCR" Type="Self.ValoresAbertosCR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CentroCusto">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ValoresAbertosCR">
+        <PropertyRef Name="CodigoCR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="valoresabertoscr_eventofolha_fk">
+    <End Role="EventoFolha" Type="Self.EventoFolha" Multiplicity="1" />
+    <End Role="ValoresAbertosCR" Type="Self.ValoresAbertosCR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventoFolha">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ValoresAbertosCR">
+        <PropertyRef Name="CodEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="valoresabertoscr_mesorcamento_fk">
+    <End Role="MesOrcamento" Type="Self.MesOrcamento" Multiplicity="1" />
+    <End Role="ValoresAbertosCR" Type="Self.ValoresAbertosCR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MesOrcamento">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="ValoresAbertosCR">
+        <PropertyRef Name="CodMesOrcamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="variaveis_cargahoraria_fk">
     <End Role="CargaHoraria" Type="Self.CargaHoraria" Multiplicity="1" />
     <End Role="Variaveis" Type="Self.Variaveis" Multiplicity="*" />
@@ -1710,6 +1757,7 @@
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsuarioPermissao" EntityType="Self.UsuarioPermissao" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ValoresAbertosBase" EntityType="Self.ValoresAbertosBase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ValoresAbertosCR" EntityType="Self.ValoresAbertosCR" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Variaveis" EntityType="Self.Variaveis" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="act_solicitacaoth_fk" Association="Self.act_solicitacaoth_fk">
       <End Role="SolicitacaoTH" EntitySet="SolicitacaoTH" />
@@ -2038,6 +2086,18 @@
     <AssociationSet Name="valoresabertosbase_mesorcamento_fk" Association="Self.valoresabertosbase_mesorcamento_fk">
       <End Role="MesOrcamento" EntitySet="MesOrcamento" />
       <End Role="ValoresAbertosBase" EntitySet="ValoresAbertosBase" />
+    </AssociationSet>
+    <AssociationSet Name="valoresabertoscr_centrocusto_fk" Association="Self.valoresabertoscr_centrocusto_fk">
+      <End Role="CentroCusto" EntitySet="CentroCusto" />
+      <End Role="ValoresAbertosCR" EntitySet="ValoresAbertosCR" />
+    </AssociationSet>
+    <AssociationSet Name="valoresabertoscr_eventofolha_fk" Association="Self.valoresabertoscr_eventofolha_fk">
+      <End Role="EventoFolha" EntitySet="EventoFolha" />
+      <End Role="ValoresAbertosCR" EntitySet="ValoresAbertosCR" />
+    </AssociationSet>
+    <AssociationSet Name="valoresabertoscr_mesorcamento_fk" Association="Self.valoresabertoscr_mesorcamento_fk">
+      <End Role="MesOrcamento" EntitySet="MesOrcamento" />
+      <End Role="ValoresAbertosCR" EntitySet="ValoresAbertosCR" />
     </AssociationSet>
     <AssociationSet Name="variaveis_cargahoraria_fk" Association="Self.variaveis_cargahoraria_fk">
       <End Role="CargaHoraria" EntitySet="CargaHoraria" />

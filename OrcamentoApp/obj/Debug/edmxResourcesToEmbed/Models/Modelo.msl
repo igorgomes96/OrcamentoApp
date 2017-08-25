@@ -626,5 +626,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ValoresAbertosCR">
+      <EntityTypeMapping TypeName="OrcamentoModel.ValoresAbertosCR">
+        <MappingFragment StoreEntitySet="ValoresAbertosCR">
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="CodigoCR" ColumnName="CodigoCR" />
+          <ScalarProperty Name="CodMesOrcamento" ColumnName="CodMesOrcamento" />
+          <ScalarProperty Name="CodEvento" ColumnName="CodEvento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
